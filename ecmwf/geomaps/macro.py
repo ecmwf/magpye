@@ -8,8 +8,10 @@
 #
 
 import os
+
 import yaml
 from Magics import macro as magics
+
 from .config import PATHS
 
 

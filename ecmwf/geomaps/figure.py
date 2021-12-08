@@ -10,6 +10,7 @@
 import os
 
 import Magics.macro as magics
+
 from . import macro
 
 

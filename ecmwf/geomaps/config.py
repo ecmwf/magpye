@@ -8,10 +8,8 @@
 #
 
 import os
-import pathlib
 
-
-PACKAGE_DIR = "/Users/jvarndell/ecmwf/repos/ecmwf-maps/ecmwf-maps/maps/"
+PACKAGE_DIR = os.path.join(os.path.dirname(__file__))
 
 
 PATHS = {
