@@ -34,7 +34,7 @@ class Macro:
     @property
     def macro_config(self):
         if self._macro_config is None:
-            path = os.path.join(PATHS["macro_config"], f"{self.macro}.yml")
+            path = os.path.join(PATHS["macro_config"], f"{self.macro}.yaml")
             try:
                 with open(path, "r") as f:
                     self._macro_config = yaml.safe_load(f)
@@ -52,7 +52,7 @@ class Macro:
 
     @property
     def args(self):
-        return self.macro_config["positional_arguments"]
+        return self.macro_config.get("positional_arguments", list())
 
     @property
     def macro(self):
