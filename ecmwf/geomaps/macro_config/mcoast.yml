@@ -1,0 +1,8 @@
+
+thesaurus:
+  resolution: map_coastline_resolution
+  colour: map_coastline_land_shade_colour
+
+requirements:
+  map_coastline_land_shade_colour:
+    map_coastline_land_shade: on

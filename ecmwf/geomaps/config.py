@@ -7,4 +7,13 @@
 # nor does it submit to any jurisdiction.
 #
 
-__version__ = "0.0.1"
+import os
+import pathlib
+
+
+PACKAGE_DIR = "/Users/jvarndell/ecmwf/repos/ecmwf-maps/ecmwf-maps/maps/"
+
+
+PATHS = {
+    "macro_config": os.path.join(PACKAGE_DIR, "macro_config"),
+}

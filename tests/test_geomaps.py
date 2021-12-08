@@ -7,4 +7,6 @@
 # nor does it submit to any jurisdiction.
 #
 
-__version__ = "0.0.1"
+
+def test_geomaps():
+    pass
