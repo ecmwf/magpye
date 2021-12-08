@@ -41,7 +41,7 @@ setuptools.setup(
     url="https://github.com/ecmwf/ecmwf-geomaps",
     packages=setuptools.find_namespace_packages(include=["ecmwf.*"]),
     include_package_data=True,
-    install_requires=["magics", "ecmwflibs"],
+    install_requires=["magics", "ecmwflibs", "pyyaml"],
     zip_safe=True,
     keywords="tool",
     classifiers=[
