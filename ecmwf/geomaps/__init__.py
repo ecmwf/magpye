@@ -7,8 +7,8 @@
 # nor does it submit to any jurisdiction.
 #
 
-from .figure import Figure
+from .geomap import GeoMap
 
 __version__ = "0.0.1"
 
-__all__ = ["Figure"]
+__all__ = ["GeoMap"]

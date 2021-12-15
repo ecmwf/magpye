@@ -9,50 +9,14 @@
 
 import os
 
-import yaml
 from Magics import macro as magics
 
 from .config import PATHS
 
 
 class Macro:
-    def __init__(self, *args, **kwargs):
-        self._macro_config = None
+    def __init__(self, **kwargs):
         self._kwargs = kwargs
-
-        for i, arg in enumerate(args):
-            try:
-                kwarg = self.args[i]
-            except IndexError:
-                raise ValueError(
-                    f"{self.macro} expected at most {len(self.args)} "
-                    f'argument{"s" if len(self.args)>1 else ""}, got '
-                    f"{len(args)}"
-                )
-            kwargs[kwarg] = arg
-
-    @property
-    def macro_config(self):
-        if self._macro_config is None:
-            path = os.path.join(PATHS["macro_config"], f"{self.macro}.yaml")
-            try:
-                with open(path, "r") as f:
-                    self._macro_config = yaml.safe_load(f)
-            except FileNotFoundError:
-                self._macro_config = dict()
-        return self._macro_config
-
-    @property
-    def thesaurus(self):
-        return self.macro_config.get("thesaurus", dict())
-
-    @property
-    def requirements(self):
-        return self.macro_config.get("requirements", dict())
-
-    @property
-    def args(self):
-        return self.macro_config.get("positional_arguments", list())
 
     @property
     def macro(self):
@@ -60,32 +24,21 @@ class Macro:
 
     @property
     def kwargs(self):
-        mapped_kwargs = {
-            self.thesaurus.get(key, key): value for key, value in self._kwargs.items()
-        }
-        for key, value in self.requirements.items():
-            if key in mapped_kwargs:
-                mapped_kwargs = {**mapped_kwargs, **value}
-        return mapped_kwargs
+        return {k: self._sanitise_value(v) for k, v in self._kwargs.items()}
 
     def execute(self):
         macro = getattr(magics, self.macro)
         return macro(**self.kwargs)
 
+    @staticmethod
+    def _sanitise_value(value):
+        if isinstance(value, bool):
+            value = bool_to_string(value)
+        return value
 
-def detect_input(data):
-    _, format = os.path.splitext(data)
-    format = format.lstrip(".")
-    macros = {
-        "grib": mgrib,
-        "grib2": mgrib,
-        "nc": mnetcdf,
-    }
-    try:
-        macro = macros[format]
-    except KeyError:
-        f'unable to plot data of type "{format}"; try grib or netcdf instead'
-    return macro
+
+def bool_to_string(boolean):
+    return "on" if boolean else "off"
 
 
 class output(Macro):

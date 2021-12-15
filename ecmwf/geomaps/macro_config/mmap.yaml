@@ -1,7 +1,0 @@
-
-thesaurus:
-  area_name: subpage_map_area_name
-
-requirements:
-  subpage_map_area_name:
-    subpage_map_library_area: on
