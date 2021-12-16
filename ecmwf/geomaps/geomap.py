@@ -121,13 +121,13 @@ class GeoMap:
     def title(self, text, **kwargs):
         pass
 
-    def data(self, file_name, *args, **kwargs):
+    def data(self, file_name, *args, preset=None, **kwargs):
         method = {
             "grib": self._grib,
             "netcdf": self._netcdf,
         }[detect_input(file_name)]
         method(file_name)
-        self._contour(*args, **kwargs)
+        self._contour(*args, preset=preset, **kwargs)
 
     @action(
         macro.mcont,
