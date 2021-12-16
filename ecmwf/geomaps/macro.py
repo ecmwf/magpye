@@ -7,8 +7,6 @@
 # nor does it submit to any jurisdiction.
 #
 
-import os
-
 from Magics import macro as magics
 
 
