@@ -11,7 +11,4 @@ import os
 
 PACKAGE_DIR = os.path.join(os.path.dirname(__file__))
 
-
-PATHS = {
-    "macro_config": os.path.join(PACKAGE_DIR, "macro_config"),
-}
+PRESETS = os.path.join(PACKAGE_DIR, "data", "presets")
