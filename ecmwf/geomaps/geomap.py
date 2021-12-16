@@ -8,9 +8,9 @@
 #
 
 import os
-import yaml
 
 import Magics.macro as magics
+import yaml
 
 from . import macro, presets
 
@@ -68,7 +68,9 @@ def action(magics_macro, conditions=None, default_preset=None, **valid_args):
 
             if preset is not None:
                 mapped_kwargs = {
-                    **presets.get(preset, method.__name__), **mapped_kwargs}
+                    **presets.get(preset, method.__name__),
+                    **mapped_kwargs,
+                }
 
             if conditions is not None:
                 for key, value in conditions.items():
@@ -99,9 +101,9 @@ class GeoMap:
                 method = list(macro_preset)[0]
                 args = macro_preset[method]
                 getattr(self, method)(
-                    preset=args.get('preset'),
-                    z_index=args.get('z_index'),
-                    **args.get('kwargs', dict()),
+                    preset=args.get("preset"),
+                    z_index=args.get("z_index"),
+                    **args.get("kwargs", dict()),
                 )
 
     def register(self, item):

@@ -8,18 +8,18 @@
 #
 
 import os
+
 import yaml
 
 from . import config
 
 
-def get(preset, method_name='GLOBAL'):
+def get(preset, method_name="GLOBAL"):
     yaml_file = os.path.join(config.PRESETS, method_name, f"{preset}.yaml")
     if not os.path.exists(yaml_file):
         print(yaml_file)
-        raise ValueError(
-            f"no preset '{preset}' defined for {method_name}()")
-    
-    with open(yaml_file, 'r') as f:
+        raise ValueError(f"no preset '{preset}' defined for {method_name}()")
+
+    with open(yaml_file, "r") as f:
         kwargs = yaml.load(f, Loader=yaml.SafeLoader)
     return kwargs
