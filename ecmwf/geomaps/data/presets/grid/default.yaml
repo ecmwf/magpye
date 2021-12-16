@@ -1,0 +1,7 @@
+---
+map_grid_latitude_increment: 10
+map_grid_longitude_increment: 20
+map_grid_latitude_reference: 0
+map_grid_longitude_reference: 0
+map_grid_line_style: solid
+map_label: true

@@ -1,0 +1,12 @@
+---
+- coastlines:
+    z_index: 1
+    preset: default-background
+
+- coastlines:
+    z_index: 2
+    preset: default
+
+- grid:
+    z_index: 2
+    preset: default

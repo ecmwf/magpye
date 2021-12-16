@@ -8,10 +8,11 @@
 #
 
 import os
+import yaml
 
 import Magics.macro as magics
 
-from . import macro
+from . import macro, presets
 
 
 def action(magics_macro, conditions=None, default_preset=None, **valid_args):
@@ -31,7 +32,7 @@ def action(magics_macro, conditions=None, default_preset=None, **valid_args):
     """
 
     def decorator(method):
-        def wrapper(self, *args, preset=None, **kwargs):
+        def wrapper(self, *args, preset=None, z_index=1, **kwargs):
             for i, arg in enumerate(args):
                 try:
                     kwarg = list(valid_args)[i]
@@ -65,6 +66,10 @@ def action(magics_macro, conditions=None, default_preset=None, **valid_args):
                 else:
                     mapped_kwargs[mapped_key] = value
 
+            if preset is not None:
+                mapped_kwargs = {
+                    **presets.get(preset, method.__name__), **mapped_kwargs}
+
             if conditions is not None:
                 for key, value in conditions.items():
                     if isinstance(value, dict):
@@ -72,7 +77,7 @@ def action(magics_macro, conditions=None, default_preset=None, **valid_args):
                             mapped_kwargs = {**value, **mapped_kwargs}
                     else:
                         mapped_kwargs = {**{key: value}, **mapped_kwargs}
-            self.register(magics_macro(**mapped_kwargs))
+            self.register(magics_macro(z_index=z_index, **mapped_kwargs))
 
         return wrapper
 
@@ -80,9 +85,24 @@ def action(magics_macro, conditions=None, default_preset=None, **valid_args):
 
 
 class GeoMap:
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, preset=None, **kwargs):
+
         self.queue = []
         self._map(*args, **kwargs)
+
+        self.apply_preset(preset)
+
+    def apply_preset(self, preset):
+        if preset is not None:
+            macro_presets = presets.get(preset)
+            for macro_preset in macro_presets:
+                method = list(macro_preset)[0]
+                args = macro_preset[method]
+                getattr(self, method)(
+                    preset=args.get('preset'),
+                    z_index=args.get('z_index'),
+                    **args.get('kwargs', dict()),
+                )
 
     def register(self, item):
         self.queue.append(item)
@@ -222,7 +242,7 @@ class GeoMap:
 
     def _execute(self, output=None):
         output = [output] if output is not None else []
-        queue = output + self.queue
+        queue = output + sorted(self.queue, key=lambda x: x.z_index)
         return magics.plot(*(macro.execute() for macro in queue))
 
 

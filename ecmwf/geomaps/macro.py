@@ -11,11 +11,10 @@ import os
 
 from Magics import macro as magics
 
-from .config import PATHS
-
 
 class Macro:
-    def __init__(self, **kwargs):
+    def __init__(self, z_index=1, **kwargs):
+        self.z_index = z_index
         self._kwargs = kwargs
 
     @property
