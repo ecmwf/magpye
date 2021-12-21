@@ -2,7 +2,7 @@
 contour : 'off'
 contour_hilo: 'off'
 contour_label: 'off'
-contour_level_list: '2/4/6/8/12/18/30'
+contour_level_list: [2.0,4,6,8,12,18,30]
 contour_level_selection_type: 'level_list'
 contour_reference_level: 0
 contour_shade: 'on'

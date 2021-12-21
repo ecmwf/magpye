@@ -1,0 +1,12 @@
+---
+contour_highlight: "off"
+contour_hilo: "off"
+contour_label: "off"
+contour: "off"
+contour_level_list: [0.1, 1, 2, 5, 10, 15, 20, 30, 40, 50, 100, 300, 1000]
+contour_level_selection_type: "level_list"
+contour_shade_colour_list: ["RGB(0.94,0.86,0.72)", "RGB(0.71,0.98,0.67)", "RGB(0.47,0.96,0.45)", "RGB(0.71,0.94,0.98)", "RGB(0.47,0.73,0.98)", "RGB(0.24,0.59,0.96)", "RGB(0.12,0.43,0.93)", "RGB(1,0.91,0.47)", "RGB(1,0.63,0)", "red", "RGB(0.64,0.13,0.13)", "magenta", "grey"]
+contour_shade: "on"
+contour_shade_colour_method: "list"
+contour_shade_method: "area_fill"
+legend: "on"
