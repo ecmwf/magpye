@@ -1,1 +1,1 @@
-include ecmwf/*/*/*.yaml
+recursive-include ecmwf/*/* *.yaml
