@@ -155,7 +155,7 @@ class GeoMap:
         Plot line contours on a map.
         """
         self._input(data)
-        self._contour(*args, preset=preset, **kwargs)
+        self._contour_lines(*args, preset=preset, **kwargs)
 
     def shaded_contours(self, data, *args, style=None, preset=None, **kwargs):
         """
@@ -166,7 +166,7 @@ class GeoMap:
         if isinstance(style, str):
             kwargs["contour_shade_palette_name"] = style
 
-        self._filled_contour(*args, preset=preset, **kwargs)
+        self._shaded_contours(*args, preset=preset, **kwargs)
 
     @action(
         macro.mcont,
@@ -175,9 +175,6 @@ class GeoMap:
             "contour": False,
             "contour_shade": True,
             "contour_shade_method": "area_fill",
-            "contour_level_list": {
-                "contour_level_selection_type": "level_list",
-            },
             "contour_interval": {
                 "contour_level_selection_type": "interval",
             },
@@ -214,9 +211,6 @@ class GeoMap:
             "legend": False,
             "contour": True,
             "contour_shade": False,
-            "contour_level_list": {
-                "contour_level_selection_type": "level_list",
-            },
             "contour_interval": {
                 "contour_level_selection_type": "interval",
             },
