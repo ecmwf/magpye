@@ -205,7 +205,7 @@ class GeoMap:
         shade_type="contour_shade_technique",
         contour_method="contour_method",
     )
-    def _filled_contour(self, *args, **kwargs):
+    def _shaded_contours(self, *args, **kwargs):
         pass
 
     @action(
@@ -249,7 +249,7 @@ class GeoMap:
         label_colour="contour_label_colour",
         label_frequency="contour_label_frequency",
     )
-    def _contour(self, *args, **kwargs):
+    def _contour_lines(self, *args, **kwargs):
         pass
 
     @action(
