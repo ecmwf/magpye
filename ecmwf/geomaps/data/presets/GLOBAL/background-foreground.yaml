@@ -7,6 +7,6 @@
     z_index: 2
     preset: default
 
-- grid:
+- gridlines:
     z_index: 2
     preset: default
