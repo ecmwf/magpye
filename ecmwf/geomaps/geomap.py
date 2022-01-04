@@ -44,8 +44,10 @@ class GeoMap:
         extent = kwargs.pop("extent", None)
         if extent is not None:
             (
-                kwargs["lower_left_lat"], kwargs["lower_left_lon"],
-                kwargs["upper_right_lat"], kwargs["upper_right_lon"],
+                kwargs["lower_left_lat"],
+                kwargs["lower_left_lon"],
+                kwargs["upper_right_lat"],
+                kwargs["upper_right_lon"],
             ) = extent
         self.__map(*args, **kwargs)
 
@@ -154,7 +156,7 @@ class GeoMap:
         """
         self._input(data)
         self._contour(*args, preset=preset, **kwargs)
-        
+
     def shaded_contours(self, data, *args, style=None, preset=None, **kwargs):
         """
         Plot filled contours on a map.
@@ -223,7 +225,7 @@ class GeoMap:
             },
             "contour_label_text": {
                 "contour_label_type": "text",
-            }
+            },
         },
         line_style=["contour_line_style", "contour_highlight_style"],
         line_colour=["contour_line_colour", "contour_highlight_colour"],
