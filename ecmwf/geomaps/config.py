@@ -11,4 +11,4 @@ import os
 
 PACKAGE_DIR = os.path.join(os.path.dirname(__file__))
 
-PRESETS = os.path.join(PACKAGE_DIR, "data", "presets")
+PRESETS = os.path.join(PACKAGE_DIR, "static", "presets")

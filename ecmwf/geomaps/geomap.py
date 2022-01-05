@@ -11,7 +11,7 @@ import os
 
 import Magics.macro as magics
 
-from . import macro, presets
+from . import data, macro, presets
 from .action import action
 
 
@@ -138,30 +138,22 @@ class GeoMap:
     def title(self, text, **kwargs):
         pass
 
-    def _input(self, data):
-        if isinstance(data, str):
-            file_name = data
-            method = {
-                "grib": self._grib,
-                "netcdf": self._netcdf,
-            }[detect_input(file_name)]
-        else:
-            file_name = data.grib_index()[0][0]
-            method = self._grib
-        method(file_name)
+    def _input(self, source):
+        source = data.detect_source(source, self)
+        source.get()
 
-    def contour_lines(self, data, *args, preset=None, **kwargs):
+    def contour_lines(self, source, *args, preset=None, **kwargs):
         """
         Plot line contours on a map.
         """
-        self._input(data)
+        self._input(source)
         self._contour_lines(*args, preset=preset, **kwargs)
 
-    def shaded_contours(self, data, *args, style=None, preset=None, **kwargs):
+    def shaded_contours(self, source, *args, style=None, preset=None, **kwargs):
         """
         Plot filled contours on a map.
         """
-        self._input(data)
+        self._input(source)
 
         if isinstance(style, str):
             kwargs["contour_shade_palette_name"] = style
@@ -246,23 +238,6 @@ class GeoMap:
     def _contour_lines(self, *args, **kwargs):
         pass
 
-    @action(
-        macro.mgrib,
-        file_name="grib_input_file_name",
-    )
-    def _grib(self, *args, **kwargs):
-        pass
-
-    @action(
-        macro.mnetcdf,
-        {
-            "netcdf_value_variable": "psl",
-        },
-        file_name="netcdf_filename",
-    )
-    def _netcdf(self, *args, **kwargs):
-        pass
-
     def show(self):
         return self._execute()
 
@@ -281,23 +256,3 @@ class GeoMap:
         output = [output] if output is not None else []
         queue = output + sorted(self.queue, key=lambda x: x.z_index)
         return magics.plot(*(macro.execute() for macro in queue))
-
-
-def detect_input(file_name):
-    _, ext = os.path.splitext(file_name)
-    ext = ext.lstrip(".")
-    format_types = {
-        "grib": "grib",
-        "grb": "grib",
-        "grib1": "grib",
-        "grib2": "grib",
-        "nc": "netcdf",
-        "nc3": "netcdf",
-        "nc4": "netcdf",
-        "cdf": "netcdf",
-    }
-    try:
-        format_type = format_types[ext]
-    except KeyError:
-        f"unrecognised extension '.{ext}'; try grib or netcdf instead"
-    return format_type
