@@ -8,12 +8,10 @@ class Grib(Data):
     
     @action(
         macro.mgrib,
-        {
-            "grib_file_address_mode": "byte_offset",
-        },
         file_name="grib_input_file_name",
         index="grib_field_position",
         grib_id="grib_id",
+        grib_mode="grib_file_address_mode",
     )
     def _get(self, *args, **kwargs):
         pass

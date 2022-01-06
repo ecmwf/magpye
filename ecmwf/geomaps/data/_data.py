@@ -15,3 +15,6 @@ class Data:
 
     def _get(self, *args, **kwargs):
         raise NotImplementedError
+
+    def get_extent(self):
+        return dict()
