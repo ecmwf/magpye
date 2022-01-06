@@ -260,7 +260,6 @@ class GeoMap:
 
     @action(
         macro.mlegend,
-
     )
     def legend(self, *args, **kwargs):
         pass
