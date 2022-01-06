@@ -50,6 +50,10 @@ class mcont(Macro):
     pass
 
 
+class mwind(Macro):
+    pass
+
+
 class mlegend(Macro):
     pass
 

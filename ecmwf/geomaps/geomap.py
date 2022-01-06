@@ -160,6 +160,13 @@ class GeoMap:
 
         self._shaded_contours(*args, preset=preset, **kwargs)
 
+    def wind(self, source, *args, preset=None, **kwargs):
+        """
+        Plot wind arrows on a map.
+        """
+        self._input(source)
+        self._wind(*args, preset=preset, **kwargs)
+
     @action(
         macro.mcont,
         {
@@ -193,6 +200,7 @@ class GeoMap:
         hatch_density="contour_shade_hatch_density",
         shade_type="contour_shade_technique",
         contour_method="contour_method",
+        legend="legend",
     )
     def _shaded_contours(self, *args, **kwargs):
         pass
@@ -234,8 +242,27 @@ class GeoMap:
         label_font_style="contour_label_font_style",
         label_colour="contour_label_colour",
         label_frequency="contour_label_frequency",
+        legend="legend",
     )
     def _contour_lines(self, *args, **kwargs):
+        pass
+
+    @action(
+        macro.mwind,
+        {
+            "legend": False,
+            "subpage_clipping": False,
+        },
+        arrow_style="wind_field_type",
+    )
+    def _wind(self, *args, **kwargs):
+        pass
+
+    @action(
+        macro.mlegend,
+
+    )
+    def legend(self, *args, **kwargs):
         pass
 
     def show(self):

@@ -17,3 +17,8 @@ def show():
 @quick_plot
 def contour_lines(*args, **kwargs):
     pass
+
+
+@quick_plot
+def wind(*args, **kwargs):
+    pass
