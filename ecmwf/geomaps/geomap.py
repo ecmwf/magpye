@@ -144,9 +144,9 @@ class GeoMap:
     def title(self, text, **kwargs):
         pass
 
-    def _input(self, source):
+    def _input(self, source, **kwargs):
         source = data.detect_source(source, self)
-        source.get()
+        source.get(**kwargs)
 
     def contour_lines(self, source, *args, preset=None, **kwargs):
         """
@@ -166,28 +166,41 @@ class GeoMap:
 
         self._shaded_contours(*args, preset=preset, **kwargs)
 
+    def waves(self, source, *args, preset=None, **kwargs):
+        return self._vector(
+            self._input(source, wind_mode="sd"),
+            self._wind,
+            *args,
+            preset=preset,
+            **kwargs,
+        )
+
+    def waves_shaded(self, source, *args, preset=None, **kwargs):
+        return self._vector(
+            self._input(source, wind_mode="sd"),
+            self._wind_shaded,
+            *args,
+            preset=preset,
+            **kwargs,
+        )
+
     def wind(self, source, *args, preset=None, **kwargs):
         """
         Plot wind arrows on a map.
         """
-        self._input(source)
-
-        arrow_head = kwargs.pop("arrow_head", None)
-        if arrow_head is not None:
-            if "-" in arrow_head:
-                style, angle = arrow_head.split("-")
-            else:
-                style, angle = arrow_head, 45
-            kwargs["_arrow_shape"] = ARROW_STYLES.index(style)
-            kwargs["_arrow_ratio"] = int(angle) / 90
-
-        self._wind(*args, preset=preset, **kwargs)
+        return self._vector(
+            self._input(source), self._wind, *args, preset=preset, **kwargs
+        )
 
     def wind_shaded(self, source, *args, preset=None, **kwargs):
         """
         Plot coloured wind arrows on a map.
         """
-        self._input(source)
+        return self._vector(
+            self._input(source), self._wind_shaded, *args, preset=preset, **kwargs
+        )
+
+    def _vector(self, input, plotter, *args, **kwargs):
 
         arrow_head = kwargs.pop("arrow_head", None)
         if arrow_head is not None:
@@ -198,7 +211,7 @@ class GeoMap:
             kwargs["_arrow_shape"] = ARROW_STYLES.index(style)
             kwargs["_arrow_ratio"] = int(angle) / 90
 
-        self._wind_shaded(*args, preset=preset, **kwargs)
+        plotter(*args, **kwargs)
 
     @action(
         macro.mcont,
@@ -416,6 +429,7 @@ class GeoMap:
             "legend_title_text": {"legend_title": True},
             "legend_user_minimum_text": {"legend_user_minimum": True},
             "legend_user_maximum_text": {"legend_user_maximum": True},
+            "legend_box_x_position": {"legend_box_mode": "positional"},
         },
         text_colour=["legend_text_colour", "legend_title_font_colour"],
         title="legend_title_text",
