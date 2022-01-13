@@ -22,3 +22,8 @@ def contour_lines(*args, **kwargs):
 @quick_plot
 def wind(*args, **kwargs):
     pass
+
+
+@quick_plot
+def rivers(*args, **kwargs):
+    pass

@@ -11,6 +11,9 @@ from Magics import macro as magics
 
 
 class Macro:
+
+    PLOTTER = False
+
     def __init__(self, z_index=1, **kwargs):
         self.z_index = z_index
         self._kwargs = kwargs
@@ -47,7 +50,7 @@ class mtext(Macro):
 
 
 class mcont(Macro):
-    pass
+    PLOTTER = True
 
 
 class mwind(Macro):

@@ -8,6 +8,9 @@ class NetCDF(Data):
     
     @action(
         macro.mnetcdf,
+        {
+            "netcdf_field_automatic_scaling": False,
+        },
         file_name="netcdf_file_name",
         variable_name="netcdf_value_variable",
     )

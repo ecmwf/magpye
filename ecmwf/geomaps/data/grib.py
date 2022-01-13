@@ -8,6 +8,9 @@ class Grib(Data):
     
     @action(
         macro.mgrib,
+        {
+            "grib_automatic_scaling": False,
+        },
         file_name="grib_input_file_name",
         index="grib_field_position",
         grib_id="grib_id",

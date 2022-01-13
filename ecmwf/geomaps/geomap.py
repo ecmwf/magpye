@@ -14,6 +14,8 @@ import Magics.macro as magics
 from . import data, macro, presets
 from .action import action
 
+ARROW_STYLES = ["angle", "triangle", "triangle2", "triangle3"]
+
 
 class GeoMap:
     """Class for designing and plotting geospatial maps."""
@@ -53,7 +55,11 @@ class GeoMap:
 
     @action(
         macro.mmap,
-        {"subpage_map_area_name": {"subpage_map_library_area": True}},
+        {
+            "subpage_map_area_name": {"subpage_map_library_area": True},
+            "subpage_expand_mode": True,
+            "subpage_clipping": True,
+        },
         area_name="subpage_map_area_name",
         projection="subpage_map_projection",
         lower_left_lat="subpage_lower_left_latitude",
@@ -121,8 +127,8 @@ class GeoMap:
         label_font="map_label_font_style",
         label_colour="map_label_colour",
         label_size="map_label_height",
-        label_lat_freq="map_label_latitude_frequency",
-        label_lon_freq="map_label_longitude_frequency",
+        label_latitude_frequency="map_label_latitude_frequency",
+        label_longintude_frequency="map_label_longitude_frequency",
         label_top_edge="map_label_top",
         label_bottom_edge="map_label_bottom",
         label_left_edge="map_label_left",
@@ -149,7 +155,7 @@ class GeoMap:
         self._input(source)
         self._contour_lines(*args, preset=preset, **kwargs)
 
-    def shaded_contours(self, source, *args, style=None, preset=None, **kwargs):
+    def contour_shaded(self, source, *args, style=None, preset=None, **kwargs):
         """
         Plot filled contours on a map.
         """
@@ -165,7 +171,34 @@ class GeoMap:
         Plot wind arrows on a map.
         """
         self._input(source)
+
+        arrow_head = kwargs.pop("arrow_head", None)
+        if arrow_head is not None:
+            if "-" in arrow_head:
+                style, angle = arrow_head.split("-")
+            else:
+                style, angle = arrow_head, 45
+            kwargs["_arrow_shape"] = ARROW_STYLES.index(style)
+            kwargs["_arrow_ratio"] = int(angle) / 90
+
         self._wind(*args, preset=preset, **kwargs)
+
+    def wind_shaded(self, source, *args, preset=None, **kwargs):
+        """
+        Plot coloured wind arrows on a map.
+        """
+        self._input(source)
+
+        arrow_head = kwargs.pop("arrow_head", None)
+        if arrow_head is not None:
+            if "-" in arrow_head:
+                style, angle = arrow_head.split("-")
+            else:
+                style, angle = arrow_head, 45
+            kwargs["_arrow_shape"] = ARROW_STYLES.index(style)
+            kwargs["_arrow_ratio"] = int(angle) / 90
+
+        self._wind_shaded(*args, preset=preset, **kwargs)
 
     @action(
         macro.mcont,
@@ -200,7 +233,6 @@ class GeoMap:
         hatch_density="contour_shade_hatch_density",
         shade_type="contour_shade_technique",
         contour_method="contour_method",
-        legend="legend",
     )
     def _shaded_contours(self, *args, **kwargs):
         pass
@@ -242,7 +274,6 @@ class GeoMap:
         label_font_style="contour_label_font_style",
         label_colour="contour_label_colour",
         label_frequency="contour_label_frequency",
-        legend="legend",
     )
     def _contour_lines(self, *args, **kwargs):
         pass
@@ -251,17 +282,158 @@ class GeoMap:
         macro.mwind,
         {
             "legend": False,
-            "subpage_clipping": False,
+            "wind_thinning_method": "automatic",
+            "wind_arrow_calm_below": {"wind_arrow_calm_indicator": True},
+            "wind_flag_calm_below": {"wind_flag_calm_indicator": True},
         },
-        arrow_style="wind_field_type",
+        wind_style="wind_field_type",
+        colour=["wind_flag_colour", "wind_arrow_colour"],
+        flag_length="wind_flag_length",
+        flag_origin_marker="wind_flag_origin_marker",
+        flag_origin_size="wind_flag_origin_marker_size",
+        density="wind_thinning_factor",
+        calm_threshold=["wind_arrow_calm_below", "wind_flag_calm_below"],
+        calm_indicator_size=[
+            "wind_arrow_calm_indicator_size",
+            "wind_flag_calm_indicator_size",
+        ],
+        _arrow_shape="wind_arrow_head_shape",
+        _arrow_ratio="wind_arrow_head_ratio",
+        max_speed=["wind_arrow_max_speed", "wind_flag_max_speed"],
+        min_speed=["wind_arrow_min_speed", "wind_flag_min_speed"],
+        arrow_origin="wind_arrow_origin_position",
+        line_thickness=["wind_arrow_thickness", "wind_flag_thickness"],
+        line_style=["wind_arrow_style", "wind_flag_style"],
     )
     def _wind(self, *args, **kwargs):
         pass
 
     @action(
-        macro.mlegend,
+        macro.mwind,
+        {
+            "legend": False,
+            "wind_advanced_method": True,
+            "wind_thinning_method": "automatic",
+            "wind_arrow_calm_below": {"wind_arrow_calm_indicator": True},
+            "wind_flag_calm_below": {"wind_flag_calm_indicator": True},
+            "contour_level_count": {
+                "wind_advanced_colour_selection_type": "count",
+            },
+            "contour_interval": {
+                "wind_advanced_colour_selection_type": "interval",
+            },
+            "contour_level_list": {
+                "wind_advanced_colour_selection_type": "list",
+            },
+            "wind_advanced_colour_list": {
+                "wind_advanced_colour_table_colour_method": "list",
+            },
+            "contour_shade_min_level_colour": {
+                "wind_advanced_colour_table_colour_method": "calculate",
+            },
+        },
+        wind_style="wind_field_type",
+        flag_length="wind_flag_length",
+        flag_origin_marker="wind_flag_origin_marker",
+        flag_origin_size="wind_flag_origin_marker_size",
+        density="wind_thinning_factor",
+        calm_threshold=["wind_arrow_calm_below", "wind_flag_calm_below"],
+        calm_indicator_size=[
+            "wind_arrow_calm_indicator_size",
+            "wind_flag_calm_indicator_size",
+        ],
+        _arrow_shape="wind_arrow_head_shape",
+        _arrow_ratio="wind_arrow_head_ratio",
+        max_speed=[
+            "wind_arrow_max_speed",
+            "wind_flag_max_speed",
+            "contour_max_level",
+            "contour_shade_max_level",
+            "wind_advanced_colour_max_value",
+        ],
+        min_speed=[
+            "wind_arrow_min_speed",
+            "wind_flag_min_speed",
+            "contour_min_level",
+            "contour_shade_min_level",
+            "wind_advanced_colour_min_value",
+        ],
+        arrow_origin="wind_arrow_origin_position",
+        line_thickness=["wind_arrow_thickness", "wind_flag_thickness"],
+        line_style=["wind_arrow_style", "wind_flag_style"],
+        bin_count=["contour_level_count", "wind_advanced_colour_level_count"],
+        bin_tolerance=[
+            "contour_level_tolerance",
+            "wind_advanced_colour_level_tolerance",
+        ],
+        bin_reference=[
+            "contour_reference_level",
+            "wind_advanced_colour_reference_level",
+        ],
+        bin_interval=["contour_interval", "wind_advanced_colour_level_interval"],
+        bins=["contour_level_list", "wind_advanced_colour_level_list"],
+        colours="wind_advanced_colour_list",
+        min_colour=[
+            "contour_shade_min_level_colour",
+            "wind_advanced_colour_min_level_colour",
+        ],
+        max_colour=[
+            "contour_shade_max_level_colour",
+            "wind_advanced_colour_max_level_colour",
+        ],
+        colour_wheel_direction=[
+            "contour_shade_colour_direction",
+            "wind_advanced_colour_direction",
+        ],
     )
+    def _wind_shaded(self, *args, **kwargs):
+        pass
+
     def legend(self, *args, **kwargs):
+        for item in self.queue:
+            if item.PLOTTER:
+                item._kwargs["legend"] = True
+        position = kwargs.pop("position", None)
+        if position is not None:
+            if isinstance(position, (list, tuple)):
+                try:
+                    (
+                        kwargs["_user_x_position"],
+                        kwargs["_user_y_position"],
+                        kwargs["_user_x_length"],
+                        kwargs["_user_y_length"],
+                    ) = position
+                except ValueError:
+                    raise ValueError("position expects [x, x_len, y, y_len]")
+            else:
+                kwargs["_auto_position"] = position
+        return self._legend(*args, **kwargs)
+
+    @action(
+        macro.mlegend,
+        {
+            "legend_display_type": "continuous",
+            "legend_title_text": {"legend_title": True},
+            "legend_user_minimum_text": {"legend_user_minimum": True},
+            "legend_user_maximum_text": {"legend_user_maximum": True},
+        },
+        text_colour=["legend_text_colour", "legend_title_font_colour"],
+        title="legend_title_text",
+        title_text_colour="legend_title_font_colour",
+        title_orientation="legend_title_orientation",
+        title_font_size="legend_title_font_size",
+        title_position="legend_title_position",
+        minimum_text="legend_user_minimum_text",
+        maximum_text="legend_user_maximum_text",
+        display_type="legend_display_type",
+        label_frequency="legend_label_frequency",
+        _auto_position="legend_automatic_position",
+        _user_x_position="legend_box_x_position",
+        _user_y_position="legend_box_y_position",
+        _user_x_length="legend_box_x_length",
+        _user_y_length="legend_box_y_length",
+    )
+    def _legend(self, *args, **kwargs):
         pass
 
     def show(self):
