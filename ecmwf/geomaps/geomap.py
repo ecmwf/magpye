@@ -27,6 +27,8 @@ class GeoMap:
 
         self.apply_preset(preset)
 
+        self._show_legend = False
+
     def apply_preset(self, preset):
         if preset is not None:
             macro_presets = presets.get(preset)
@@ -216,7 +218,7 @@ class GeoMap:
     @action(
         macro.mcont,
         {
-            "legend": False,
+            "legend": True,
             "contour": False,
             "contour_shade": True,
             "contour_shade_method": "area_fill",
@@ -246,6 +248,7 @@ class GeoMap:
         hatch_density="contour_shade_hatch_density",
         shade_type="contour_shade_technique",
         contour_method="contour_method",
+        legend="legend",
     )
     def _shaded_contours(self, *args, **kwargs):
         pass
@@ -287,6 +290,7 @@ class GeoMap:
         label_font_style="contour_label_font_style",
         label_colour="contour_label_colour",
         label_frequency="contour_label_frequency",
+        legend="legend",
     )
     def _contour_lines(self, *args, **kwargs):
         pass
@@ -317,6 +321,7 @@ class GeoMap:
         arrow_origin="wind_arrow_origin_position",
         line_thickness=["wind_arrow_thickness", "wind_flag_thickness"],
         line_style=["wind_arrow_style", "wind_flag_style"],
+        legend="legend",
     )
     def _wind(self, *args, **kwargs):
         pass
@@ -398,14 +403,13 @@ class GeoMap:
             "contour_shade_colour_direction",
             "wind_advanced_colour_direction",
         ],
+        legend="legend",
     )
     def _wind_shaded(self, *args, **kwargs):
         pass
 
     def legend(self, *args, **kwargs):
-        for item in self.queue:
-            if item.PLOTTER:
-                item._kwargs["legend"] = True
+        self._show_legend = True
         position = kwargs.pop("position", None)
         if position is not None:
             if isinstance(position, (list, tuple)):
@@ -465,6 +469,10 @@ class GeoMap:
         return self._execute(output=output)
 
     def _execute(self, output=None):
+        if not self._show_legend:
+            for item in self.queue:
+                if item.PLOTTER:
+                    item._kwargs["legend"] = False
         output = [output] if output is not None else []
         queue = output + sorted(self.queue, key=lambda x: x.z_index)
         return magics.plot(*(macro.execute() for macro in queue))
