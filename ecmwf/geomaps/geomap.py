@@ -42,7 +42,10 @@ class GeoMap:
                 )
 
     def register(self, item):
-        self.queue.append(item)
+        if item.__class__.__name__ == "page":
+            self.queue = [self.queue[0]] + [item] + self.queue[1:]
+        else:
+            self.queue.append(item)
 
     def _map(self, *args, **kwargs):
         extent = kwargs.pop("extent", None)
@@ -58,6 +61,7 @@ class GeoMap:
     @action(
         macro.mmap,
         {
+            "page_id_line": False,
             "subpage_map_area_name": {"subpage_map_library_area": True},
             "subpage_expand_mode": True,
             "subpage_clipping": True,
@@ -70,6 +74,28 @@ class GeoMap:
         upper_right_lon="subpage_upper_right_longitude",
     )
     def __map(self, *args, **kwargs):
+        pass
+
+    @action(
+        macro.page,
+        {
+            "page_id_line": True,
+            "page_id_line_logo_name": {"page_id_line_logo_plot": True},
+            "page_id_line_logo_plot": False,
+            "page_id_line_system_plot": False,
+            "page_id_line_date_plot": False,
+            "page_id_line_magics": False,
+            "page_id_line_errors_plot": False,
+        },
+        text="page_id_line_user_text",
+        font="page_id_line_font",
+        font_style="page_id_line_font_style",
+        size="page_id_line_height",
+        colour="page_id_line_colour",
+        logo="page_id_line_logo_name",
+        datestamp="page_id_line_date_plot",
+    )
+    def footer(self, *args, **kwargs):
         pass
 
     @action(

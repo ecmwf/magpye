@@ -65,6 +65,10 @@ class mmap(Macro):
     pass
 
 
+class page(Macro):
+    pass
+
+
 class mcoast(Macro):
     pass
 
