@@ -1,4 +1,4 @@
-# ecmwf-geomaps
+# magpye 
 
 **DISCLAIMER**:
 This project is **BETA** and will be **Experimental** for the forseable time.
