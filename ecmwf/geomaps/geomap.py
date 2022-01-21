@@ -21,6 +21,7 @@ class GeoMap:
     """Class for designing and plotting geospatial maps."""
 
     def __init__(self, *args, preset=None, **kwargs):
+        self._sources = []
 
         self.queue = []
         self._map(*args, **kwargs)
@@ -174,6 +175,12 @@ class GeoMap:
 
     def _input(self, source, **kwargs):
         source = data.detect_source(source, self)
+        self._sources.append(source)
+        source.get(**kwargs)
+
+    def _uv_input(self, u, v, **kwargs):
+        source = data.wind_source_uv(u, v, self)
+        self._sources.append(source)
         source.get(**kwargs)
 
     def contour_lines(self, source, *args, preset=None, **kwargs):
@@ -194,41 +201,32 @@ class GeoMap:
 
         self._shaded_contours(*args, preset=preset, **kwargs)
 
-    def waves(self, source, *args, preset=None, **kwargs):
-        return self._vector(
-            self._input(source, wind_mode="sd"),
-            self._wind,
-            *args,
-            preset=preset,
-            **kwargs,
-        )
-
-    def waves_shaded(self, source, *args, preset=None, **kwargs):
-        return self._vector(
-            self._input(source, wind_mode="sd"),
-            self._wind_shaded,
-            *args,
-            preset=preset,
-            **kwargs,
-        )
-
-    def wind(self, source, *args, preset=None, **kwargs):
+    def arrows(
+        self,
+        *,
+        u=None,
+        v=None,
+        speed=None,
+        direction=None,
+        shaded=False,
+        preset=None,
+        **kwargs,
+    ):
         """
-        Plot wind arrows on a map.
+        Plot arrows on a map.
         """
-        return self._vector(
-            self._input(source), self._wind, *args, preset=preset, **kwargs
-        )
+        if all((u, v)):
+            self._uv_input(u, v)
+        elif all((speed, direction)):
+            raise NotImplementedError("TODO: speed and direction")
+        else:
+            raise TypeError("arrows() requires u and v OR speed and direction")
 
-    def wind_shaded(self, source, *args, preset=None, **kwargs):
-        """
-        Plot coloured wind arrows on a map.
-        """
-        return self._vector(
-            self._input(source), self._wind_shaded, *args, preset=preset, **kwargs
-        )
+        method = self._arrows if not shaded else self._arrows_shaded
 
-    def _vector(self, input, plotter, *args, **kwargs):
+        return self._vector(method, preset=preset, **kwargs)
+
+    def _vector(self, plotter, *args, **kwargs):
 
         arrow_head = kwargs.pop("arrow_head", None)
         if arrow_head is not None:
@@ -349,7 +347,7 @@ class GeoMap:
         line_style=["wind_arrow_style", "wind_flag_style"],
         legend="legend",
     )
-    def _wind(self, *args, **kwargs):
+    def _arrows(self, *args, **kwargs):
         pass
 
     @action(
@@ -431,7 +429,7 @@ class GeoMap:
         ],
         legend="legend",
     )
-    def _wind_shaded(self, *args, **kwargs):
+    def _arrows_shaded(self, *args, **kwargs):
         pass
 
     def legend(self, *args, **kwargs):
@@ -501,4 +499,8 @@ class GeoMap:
                     item._kwargs["legend"] = False
         output = [output] if output is not None else []
         queue = output + sorted(self.queue, key=lambda x: x.z_index)
-        return magics.plot(*(macro.execute() for macro in queue))
+        result = magics.plot(*(macro.execute() for macro in queue))
+
+        self._sources = []
+
+        return result
