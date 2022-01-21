@@ -485,8 +485,8 @@ class GeoMap:
         nargs = len(args)
         if nargs == 1:
             name, format = os.path.splitext(args[0])
-            kwargs["name"] = name
-            kwargs["formats"] = [format.lstrip(".")]
+            kwargs["output_name"] = name
+            kwargs["output_formats"] = [format.lstrip(".")]
         elif nargs > 1:
             raise TypeError(f"save expected at most 1 argument, got {nargs}")
         output = macro.output(**kwargs)
