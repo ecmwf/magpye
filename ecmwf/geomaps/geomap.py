@@ -183,13 +183,8 @@ class GeoMap:
         self._sources.append(source)
         source.get(**kwargs)
 
-    def _uv_input(self, u, v, **kwargs):
-        source = data.wind_source_uv(u, v, self)
-        self._sources.append(source)
-        source.get(**kwargs)
-
-    def _sd_input(self, s, d, **kwargs):
-        source = data.wind_source_sd(s, d, self)
+    def _vector_input(self, *args, wind_mode="uv", **kwargs):
+        source = data.detect_vector_source(*args, wind_mode=wind_mode, geomap=self)
         self._sources.append(source)
         source.get(**kwargs)
 
@@ -226,9 +221,9 @@ class GeoMap:
         Plot arrows on a map.
         """
         if all((u, v)):
-            self._uv_input(u, v)
+            self._vector_input(u, v, wind_mode="uv")
         elif all((speed, direction)):
-            self._sd_input(speed, direction)
+            self._vector_input(speed, direction, wind_mode="sd")
         else:
             raise TypeError("arrows() requires u and v OR speed and direction")
 

@@ -13,33 +13,20 @@ def detect_source(source, geomap):
     return data
 
 
-def wind_source_uv(u, v, geomap):
-    assert type(u) == type(v), "u and v must be same type"
-    uv = temporary.temp_file('.grib').path
-    if not isinstance(u, str):
-        u, u_index = u.grib_index()[0]
-        v, v_index = v.grib_index()[0]
-    with open(uv, 'wb') as uv_file:
-        for in_file in (u, v):
-            with open(in_file, 'rb') as f:
+def detect_vector_source(*args, wind_mode, geomap):
+    tmp = temporary.temp_file('.grib').path
+    indices = []
+    for source in args:
+        if not isinstance(source, str):
+            fname, grib_index = source.grib_index()[0]
+        else:
+            raise NotImplementedError("vector plots only work with ecmwf-data")
+        with open(tmp, 'ab') as tf:
+            with open(fname, 'rb') as f:
                 for line in f:
-                    uv_file.write(line)
-    return grib.Grib(uv, geomap, wind_mode='uv', grib_mode="byte_offset", u=u_index, v=v_index)
-
-
-def wind_source_sd(s, d, geomap):
-    assert type(s) == type(d), "speed and direction must be same type"
-    sd = temporary.temp_file('.grib').path
-    if not isinstance(s, str):
-        s, s_index = s.grib_index()[0]
-        d, d_index = d.grib_index()[0]
-    with open(sd, 'wb') as sd_file:
-        for in_file in (s, d):
-            with open(in_file, 'rb') as f:
-                for line in f:
-                    sd_file.write(line)
-    return grib.Grib(sd, geomap, wind_mode='sd', grib_mode="byte_offset", u=s_index, v=d_index)
-
+                    tf.write(line)
+        indices.append(grib_index)
+    return grib.Grib(tmp, geomap, wind_mode=wind_mode, grib_mode="byte_offset", wind_1=indices[0], wind_2=indices[1])
 
 
 def detect_file(file_name):
