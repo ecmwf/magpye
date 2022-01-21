@@ -16,8 +16,8 @@ class Grib(Data):
         grib_id="grib_id",
         grib_mode="grib_file_address_mode",
         wind_mode="grib_wind_mode",
-        u="grib_wind_position_1",
-        v="grib_wind_position_2",
+        wind_1="grib_wind_position_1",
+        wind_2="grib_wind_position_2",
     )
     def _get(self, *args, **kwargs):
         pass

@@ -87,12 +87,13 @@ class GeoMap:
             "page_id_line_date_plot": False,
             "page_id_line_magics": False,
             "page_id_line_errors_plot": False,
+            "page_id_line_colour": "charcoal",
         },
         text="page_id_line_user_text",
         font="page_id_line_font",
         font_style="page_id_line_font_style",
-        size="page_id_line_height",
-        colour="page_id_line_colour",
+        text_size="page_id_line_height",
+        text_colour="page_id_line_colour",
         logo="page_id_line_logo_name",
         datestamp="page_id_line_date_plot",
     )
@@ -168,7 +169,11 @@ class GeoMap:
 
     @action(
         macro.mtext,
+        {
+            "text_colour": "charcoal",
+        },
         text="text_lines",
+        text_colour="text_colour",
     )
     def title(self, text, **kwargs):
         pass
@@ -178,8 +183,8 @@ class GeoMap:
         self._sources.append(source)
         source.get(**kwargs)
 
-    def _uv_input(self, u, v, **kwargs):
-        source = data.wind_source_uv(u, v, self)
+    def _vector_input(self, *args, wind_mode="uv", **kwargs):
+        source = data.detect_vector_source(*args, wind_mode=wind_mode, geomap=self)
         self._sources.append(source)
         source.get(**kwargs)
 
@@ -216,9 +221,9 @@ class GeoMap:
         Plot arrows on a map.
         """
         if all((u, v)):
-            self._uv_input(u, v)
+            self._vector_input(u, v, wind_mode="uv")
         elif all((speed, direction)):
-            raise NotImplementedError("TODO: speed and direction")
+            self._vector_input(speed, direction, wind_mode="sd")
         else:
             raise TypeError("arrows() requires u and v OR speed and direction")
 
@@ -454,6 +459,8 @@ class GeoMap:
         macro.mlegend,
         {
             "legend_display_type": "continuous",
+            "legend_text_colour": "charcoal",
+            "legend_title_font_colour": "charcoal",
             "legend_title_text": {"legend_title": True},
             "legend_user_minimum_text": {"legend_user_minimum": True},
             "legend_user_maximum_text": {"legend_user_maximum": True},
@@ -485,8 +492,8 @@ class GeoMap:
         nargs = len(args)
         if nargs == 1:
             name, format = os.path.splitext(args[0])
-            kwargs["name"] = name
-            kwargs["formats"] = [format.lstrip(".")]
+            kwargs["output_name"] = name
+            kwargs["output_formats"] = [format.lstrip(".")]
         elif nargs > 1:
             raise TypeError(f"save expected at most 1 argument, got {nargs}")
         output = macro.output(**kwargs)
