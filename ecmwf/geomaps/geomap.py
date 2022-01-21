@@ -183,6 +183,11 @@ class GeoMap:
         self._sources.append(source)
         source.get(**kwargs)
 
+    def _sd_input(self, s, d, **kwargs):
+        source = data.wind_source_sd(s, d, self)
+        self._sources.append(source)
+        source.get(**kwargs)
+
     def contour_lines(self, source, *args, preset=None, **kwargs):
         """
         Plot line contours on a map.
@@ -218,7 +223,7 @@ class GeoMap:
         if all((u, v)):
             self._uv_input(u, v)
         elif all((speed, direction)):
-            raise NotImplementedError("TODO: speed and direction")
+            self._sd_input(speed, direction)
         else:
             raise TypeError("arrows() requires u and v OR speed and direction")
 

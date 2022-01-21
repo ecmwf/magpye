@@ -24,7 +24,22 @@ def wind_source_uv(u, v, geomap):
             with open(in_file, 'rb') as f:
                 for line in f:
                     uv_file.write(line)
-    return grib.Grib(uv, geomap, grib_mode="byte_offset", u=u_index, v=v_index)
+    return grib.Grib(uv, geomap, wind_mode='uv', grib_mode="byte_offset", u=u_index, v=v_index)
+
+
+def wind_source_sd(s, d, geomap):
+    assert type(s) == type(d), "speed and direction must be same type"
+    sd = temporary.temp_file('.grib').path
+    if not isinstance(s, str):
+        s, s_index = s.grib_index()[0]
+        d, d_index = d.grib_index()[0]
+    with open(sd, 'wb') as sd_file:
+        for in_file in (s, d):
+            with open(in_file, 'rb') as f:
+                for line in f:
+                    sd_file.write(line)
+    return grib.Grib(sd, geomap, wind_mode='sd', grib_mode="byte_offset", u=s_index, v=d_index)
+
 
 
 def detect_file(file_name):
