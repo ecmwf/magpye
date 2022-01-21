@@ -168,7 +168,11 @@ class GeoMap:
 
     @action(
         macro.mtext,
+        {
+            "text_colour": "charcoal",
+        },
         text="text_lines",
+        text_colour="text_colour",
     )
     def title(self, text, **kwargs):
         pass
@@ -459,6 +463,8 @@ class GeoMap:
         macro.mlegend,
         {
             "legend_display_type": "continuous",
+            "legend_text_colour": "charcoal",
+            "legend_title_font_colour": "charcoal",
             "legend_title_text": {"legend_title": True},
             "legend_user_minimum_text": {"legend_user_minimum": True},
             "legend_user_maximum_text": {"legend_user_maximum": True},
