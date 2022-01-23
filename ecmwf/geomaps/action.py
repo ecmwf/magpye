@@ -9,10 +9,13 @@
 
 from . import presets
 
+from functools import wraps
+
+
 
 def action(magics_macro, conditions=None, default_preset=None, **valid_args):
     
-
+    @wraps(f)
     def decorator(method):
         def wrapper(self, *args, preset=None, z_index=1, **kwargs):
             for i, arg in enumerate(args):
