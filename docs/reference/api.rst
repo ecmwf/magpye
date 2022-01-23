@@ -2,10 +2,8 @@ API reference
 =============
 
 
-.. toctree::
-   :maxdepth: 1
-   :hidden:
-   :caption: GeoMap
+.. autosummary::
+   ecmwf.geomaps.GeoMap
 
 
 .. GeoMap
