@@ -18,7 +18,7 @@ ARROW_STYLES = ["angle", "triangle", "triangle2", "triangle3"]
 
 
 class GeoMap:
-    """Class for designing and plotting geospatial maps."""
+    """HELLO Class for designing and plotting geospatial maps."""
 
     def __init__(self, *args, preset=None, **kwargs):
         self._sources = []
