@@ -3,6 +3,8 @@ API reference
 
 
 .. autosummary::
+   :toctree: DIRNAME
+   
    ecmwf.geomaps.GeoMap
 
 
