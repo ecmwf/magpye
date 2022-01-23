@@ -37,7 +37,7 @@ Documentation
 **Reference**
 
 * :doc:`reference/api`
-* 
+  
 .. toctree::
    :maxdepth: 1
    :hidden:
