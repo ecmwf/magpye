@@ -18,7 +18,7 @@ ARROW_STYLES = ["angle", "triangle", "triangle2", "triangle3"]
 
 
 class GeoMap:
-    """HELLO Class for designing and plotting geospatial maps."""
+    """Class for designing and plotting geospatial maps."""
 
     def __init__(self, *args, preset=None, **kwargs):
         self._sources = []
@@ -152,6 +152,9 @@ class GeoMap:
         pass
 
     @action(
+        """
+        Plot gridlines on a map.
+        """
         macro.mcoast,
         {
             "map_coastline": False,
