@@ -11,20 +11,7 @@ from . import presets
 
 
 def action(magics_macro, conditions=None, default_preset=None, **valid_args):
-    """Decorator for generating figure methods.
-
-    Args:
-        magics_macro: The Magics macro to execute for this action.
-        condition (dict): A dctionary of conditional variables which are
-            required for the given action to execute on the given macro.
-            Values can be sub-dictionaries, indicating that the condition is
-            only required when a specific argument is passed.
-        default_preset (str): The name of the default preset to use for this
-            action.
-        valid_args (dict): A mapping of argument names to their Magics
-            counterparts.
-
-    """
+    
 
     def decorator(method):
         def wrapper(self, *args, preset=None, z_index=1, **kwargs):

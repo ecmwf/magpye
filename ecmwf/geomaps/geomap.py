@@ -179,7 +179,7 @@ class GeoMap:
         """
         Plot gridlines on a map.
         """
-        x = "bla"
+        print("jfkwjkkw")
         
 
     @action(
