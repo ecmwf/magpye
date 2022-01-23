@@ -138,16 +138,12 @@ class GeoMap:
         line_thickness="map_coastline_thickness",
     )
     def coastlines(self, *args, **kwargs):
-        """
-        Plot coastlines on a map.
-        Parameters
-        ----------
-        resolution: high/low/medium
-        line_colour: str
-        land_colour: str
-        sea_colour: str
-        line_style: dot/solid/dash
-        line_thickness: int
+        """Plot coastlines on a map.
+        Args:
+        
+            resolution ([high/low/medium]): [resolution of the caostlines]
+            line_colour (str): [colour]
+
         """
         coastlines=True
 
