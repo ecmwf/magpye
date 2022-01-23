@@ -176,6 +176,9 @@ class GeoMap:
         label_right_edge="map_label_right",
     )
     def gridlines(self, *args, **kwargs):
+        """
+        Plot gridlines on a map.
+        """
         pass
 
     @action(
