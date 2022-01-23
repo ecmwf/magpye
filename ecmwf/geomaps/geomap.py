@@ -149,12 +149,9 @@ class GeoMap:
         line_style: dot/solid/dash
         line_thickness: int
         """
-        pass
+        coastlines=True
 
     @action(
-        """
-        Plot gridlines on a map.
-        """
         macro.mcoast,
         {
             "map_coastline": False,
@@ -182,7 +179,8 @@ class GeoMap:
         """
         Plot gridlines on a map.
         """
-        pass
+        x = "bla"
+        
 
     @action(
         macro.mtext,
