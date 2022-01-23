@@ -141,8 +141,8 @@ class GeoMap:
         """Plot coastlines on a map. 
         
         Args:
-            resolution (high/low/medium/**automatic**): resolution of the coastlines
-            line_colour (str-->black): colour
+            resolution (high/low/medium/**automatic**): coastlines resolution
+            line_colour (str): coastlines colour 
         """
         pass
 
