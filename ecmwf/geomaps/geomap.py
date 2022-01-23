@@ -175,10 +175,13 @@ class GeoMap:
         """
         Plot gridlines on a map.
 
-        Args:
-            lat_increment ([int]): Grid latitudes increment
-            lon_increment ([int]): Grid longitudes increment
-
+        Attributes
+        ----------
+            lat_increment : int
+                Grid latitudes increment.
+            lon_increment : int
+                Grid longitudes increment.
+    
         """
         pass
         
