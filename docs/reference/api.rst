@@ -1,6 +1,8 @@
 API reference
 =============
 
+.. autosummary::
+
 
 .. GeoMap
 .. --------

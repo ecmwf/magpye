@@ -143,6 +143,11 @@ class GeoMap:
         Args:
             resolution (high/low/medium/**automatic**): coastlines resolution
             line_colour (str): coastlines colour 
+            line_style (**solid**/dash/dot): coastlines line style 
+            line_thickness (int): coastlines line thickness 
+            land_colour (str): if set, colour will be use to fill land.
+            sea_colour (str): if set, colour will be use to fill land.
+            
         """
         pass
 
@@ -174,13 +179,24 @@ class GeoMap:
         """
         Plot gridlines on a map.
 
-        Attributes
-        ----------
-            lat_increment : int
-                Grid latitudes increment.
-            lon_increment : int
-                Grid longitudes increment.
-    
+        Args:
+            lat_increment (number): latitude increment
+            lon_increment (number): longitude increment 
+            lat_reference (number): latitude reference
+            lon_reference (number): longitude reference 
+            line_colour (colour): grid line colour.
+            line_style (**solid**/dash/dot): grid line style.
+            line_thickness (number): grid line thickness.
+            labels (bool): Add the grid labels.
+            label_font (number): label font.
+            label_colour (number): label colour
+            label_latitude_frequency (number): label latitude frequency
+            label_longitude_frequency (number): label longitude frequency.
+            label_top_edge (bool): if True, label added at the top.
+            label_bottom_edge (bool): if True, label added at the bottom.
+            label_left_edge (bool): if True, label added at the left.
+            label_right_edge (bool): f True, label added at the right.
+
         """
         pass
         
