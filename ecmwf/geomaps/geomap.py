@@ -141,36 +141,35 @@ class GeoMap:
         """Plot coastlines on a map. 
         
         Args:
-            text ([any]): [description]
-            resolution ([high/low/medium]): [resolution of the caostlines]
-            line_colour ([str]): [colour]
+            resolution (high/low/medium/**automatic**): resolution of the coastlines
+            line_colour (str-->black): colour
         """
         pass
 
-    # @action(
-    #     macro.mcoast,
-    #     {
-    #         "map_coastline": False,
-    #         "map_grid": True,
-    #     },
-    #     lat_increment="map_grid_latitude_increment",
-    #     lon_increment="map_grid_longitude_increment",
-    #     lat_reference="map_grid_latitude_reference",
-    #     lon_reference="map_grid_longitude_reference",
-    #     line_style="map_grid_line_style",
-    #     line_thickness="map_grid_thickness",
-    #     line_colour="map_grid_colour",
-    #     labels="map_label",
-    #     label_font="map_label_font_style",
-    #     label_colour="map_label_colour",
-    #     label_size="map_label_height",
-    #     label_latitude_frequency="map_label_latitude_frequency",
-    #     label_longintude_frequency="map_label_longitude_frequency",
-    #     label_top_edge="map_label_top",
-    #     label_bottom_edge="map_label_bottom",
-    #     label_left_edge="map_label_left",
-    #     label_right_edge="map_label_right",
-    # )
+    @action(
+        macro.mcoast,
+        {
+            "map_coastline": False,
+            "map_grid": True,
+        },
+        lat_increment="map_grid_latitude_increment",
+        lon_increment="map_grid_longitude_increment",
+        lat_reference="map_grid_latitude_reference",
+        lon_reference="map_grid_longitude_reference",
+        line_style="map_grid_line_style",
+        line_thickness="map_grid_thickness",
+        line_colour="map_grid_colour",
+        labels="map_label",
+        label_font="map_label_font_style",
+        label_colour="map_label_colour",
+        label_size="map_label_height",
+        label_latitude_frequency="map_label_latitude_frequency",
+        label_longintude_frequency="map_label_longitude_frequency",
+        label_top_edge="map_label_top",
+        label_bottom_edge="map_label_bottom",
+        label_left_edge="map_label_left",
+        label_right_edge="map_label_right",
+    )
     def gridlines(self, *args, **kwargs):
         """
         Plot gridlines on a map.
