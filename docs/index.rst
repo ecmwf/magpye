@@ -21,7 +21,7 @@ Documentation
 * :doc:`overview`
 * :doc:`installing`
 * :doc:`notebooks`
-* :doc: `predefined geographical areas`
+* :doc:`predefined geographical areas`
 
 .. toctree::
    :maxdepth: 1
