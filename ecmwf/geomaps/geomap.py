@@ -558,6 +558,7 @@ class GeoMap:
         if nargs == 1:
             name, format = os.path.splitext(args[0])
             kwargs["output_name"] = name
+            kwargs["output_name_first_page_number"] = False
             kwargs["output_formats"] = [format.lstrip(".")]
         elif nargs > 1:
             raise TypeError(f"save expected at most 1 argument, got {nargs}")
