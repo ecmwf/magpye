@@ -115,6 +115,13 @@ class GeoMap:
         line_thickness="map_rivers_thickness",
     )
     def rivers(self, *args, **kwargs):
+        """Add rivers on a map. 
+        
+        Args:
+            line_colour (str): rivers colour 
+            line_style (**solid**/dash/dot): rivers line style 
+            line_thickness (int): rivers line thickness 
+        """
         pass
 
     @action(
