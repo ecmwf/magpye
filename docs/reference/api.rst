@@ -1,7 +1,11 @@
 API reference
 =============
 
-.. autosummary::
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: GeoMap
 
 
 .. GeoMap

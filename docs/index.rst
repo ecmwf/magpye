@@ -20,8 +20,8 @@ Documentation
 
 * :doc:`overview`
 * :doc:`installing`
-* :doc:`firststeps`
 * :doc:`notebooks`
+* :doc: `predefined geographical areas`
 
 .. toctree::
    :maxdepth: 1
@@ -30,8 +30,8 @@ Documentation
 
    overview
    installing
-   firststeps
    notebooks
+   geoareas
 
 
 **Reference**
