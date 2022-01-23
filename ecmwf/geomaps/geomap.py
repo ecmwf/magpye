@@ -145,7 +145,7 @@ class GeoMap:
             resolution ([high/low/medium]): [resolution of the caostlines]
             line_colour ([str]): [colour]
         """
-        coastlines=True
+        pass
 
     # @action(
     #     macro.mcoast,
@@ -174,6 +174,11 @@ class GeoMap:
     def gridlines(self, *args, **kwargs):
         """
         Plot gridlines on a map.
+
+        Args:
+            lat_increment ([int]): Grid latitudes increment
+            lon_increment ([int]): Grid longitudes increment
+
         """
         pass
         
