@@ -238,7 +238,24 @@ class GeoMap:
         """Plot any data on a map.
 
         Args:
-            data ([any]): [description]
+            source (object): The data to plot ( can be a path to a file or a reference to an object)
+            line_colour (colour): line colour.
+            line_style (**solid**/dash/dot):  line style.
+            line_thickness (number): grid line thickness.
+            highlight_colour (colour): highlight colour.
+            highlight_style (**solid**/dash/dot): highlight style.
+            highlight_thickness (number): highlight thickness.
+            highlight_frequency (number): highlight frequency.
+            levels (list): list of levels.      
+            interval (number): interval. 
+            interval_reference (number): interval reference.  
+            dynamic_levels(number): number of levels to plots. 
+            labels (bool): Add  labels.
+            label_font (number): label font.
+            label_colour (number): label colour
+            label_size (number): label font size
+            label_blanks (bool): label blanking
+            label_frequency (bool): label freqency
         """
         self._input(source)
         self._contour_lines(*args, preset=preset, **kwargs)
