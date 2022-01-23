@@ -187,6 +187,11 @@ class GeoMap:
         text_colour="text_colour",
     )
     def title(self, text, **kwargs):
+        """Add a title .
+
+        Args:
+            data ([any]): [description]
+        """
         pass
 
     def _input(self, source, **kwargs):
@@ -200,8 +205,10 @@ class GeoMap:
         source.get(**kwargs)
 
     def contour_lines(self, source, *args, preset=None, **kwargs):
-        """
-        Plot line contours on a map.
+        """Plot any data on a map.
+
+        Args:
+            data ([any]): [description]
         """
         self._input(source)
         self._contour_lines(*args, preset=preset, **kwargs)
