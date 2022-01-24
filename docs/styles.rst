@@ -13,6 +13,6 @@ To create a map
      # geomap.contour_lines("style/iso.grib", style = "black_i5")
      geomap.show()
 
-.. image:: _static/examples/style.png
+.. image:: _static/examples/styles.png
    :width: 50%
 
