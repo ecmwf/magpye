@@ -26,12 +26,12 @@ source_suffix = ".rst"
 master_doc = "index"
 pygments_style = "sphinx"
 html_theme_options = {"logo_only": True}
-html_logo = "_static/logo.png"
+html_logo = "_static/magpye.svg"
 
 
 # -- Project information -----------------------------------------------------
 
-project = "ecmwf-geomaps"
+project = "magpye"
 
 author = "ECMWF"
 
