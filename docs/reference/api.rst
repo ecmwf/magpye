@@ -5,12 +5,12 @@ API reference
 .. autosummary::
    :toctree: DIRNAME
    
-   ecmwf.geomaps.GeoMap
+   magpye.GeoMap
 
 
 .. GeoMap
 .. --------
 
-.. autoclass:: ecmwf.geomaps.GeoMap
+.. autoclass:: magpye.GeoMap
     :members:
 

@@ -1,12 +1,11 @@
 from Magics import macro as magics
-from ecmwf.geomaps import GeoMap
 import nbformat as nbf
 
 nb = nbf.v4.new_notebook()
 title = """\
 # Predefined areas in **mappye**"""
 import_magpye = """\
-from ecmwf.geomaps import GeoMap"""
+from magpye import GeoMap"""
 
 nb.cells.append(nbf.v4.new_markdown_cell(title))
 nb.cells.append(nbf.v4.new_code_cell(import_magpye))
@@ -32,12 +31,3 @@ with open(fname, 'w') as f:
     nbf.write(nb, f)
 
 
-
-
-
-for area in areas:
-
-    map = GeoMap(area_name=area)
-    map.coastlines(land_colour="grey")
-    map.gridlines(line_style="dash")
-    map.save("{}.png".format(area))
