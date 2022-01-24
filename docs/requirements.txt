@@ -11,5 +11,5 @@ markdown
 eccodes
 magics
 ecmwflibs
-git+git://github.com/sylvielamythepaut/magpye.git
+git+git://github.com/ecmwf/magpye.git
 termcolor
