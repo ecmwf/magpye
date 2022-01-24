@@ -1,4 +1,5 @@
 ---
-contour_automatic_setting: "style_name"
-contour_style_name: "sh_all_f0t20lst"
-legend: "on"
+style:
+  contour_automatic_setting: "style_name"
+  contour_style_name: "sh_all_f0t20lst"
+  legend: "on"

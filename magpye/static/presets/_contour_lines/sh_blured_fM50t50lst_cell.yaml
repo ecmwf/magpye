@@ -1,4 +1,5 @@
 ---
-contour_automatic_setting: "style_name"
-contour_style_name: "sh_blured_fM50t50lst_cell"
-legend: "on"
+style:
+  contour_automatic_setting: "style_name"
+  contour_style_name: "sh_blured_fM50t50lst_cell"
+  legend: "on"

@@ -1,3 +1,4 @@
 ---
-contour_automatic_setting: "style_name"
-contour_style_name: "ct_red_i2_dash"
+style:
+  contour_automatic_setting: "style_name"
+  contour_style_name: "ct_red_i2_dash"

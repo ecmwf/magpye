@@ -1,3 +1,4 @@
 ---
-contour_automatic_setting: "style_name"
-contour_style_name: "ct_blk_i5_t2_web"
+style:
+  contour_automatic_setting: "style_name"
+  contour_style_name: "ct_blk_i5_t2_web"
