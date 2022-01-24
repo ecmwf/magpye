@@ -20,7 +20,7 @@ ARROW_STYLES = ["angle", "triangle", "triangle2", "triangle3"]
 class GeoMap:
     """
     Class for designing and plotting geospatial maps.
-
+    
     Parameters
     ----------
     area_name : str, optional
@@ -200,7 +200,7 @@ class GeoMap:
         land_colour : str, optional
             Either a hexadecimal colour or a named colour to use for the fill
             colour of areas within coastline polygons (i.e. land).
-        ocaen_colour : str, optional
+        ocean_colour : str, optional
             Either a hexadecimal colour or a named colour to use for the fill
             colour of areas outside coastlines (i.e. oceans).
         """
@@ -285,6 +285,7 @@ class GeoMap:
             right edge/border of the map.
         """
         pass
+        
 
     @action(
         macro.mtext,
@@ -295,10 +296,8 @@ class GeoMap:
         text_colour="text_colour",
     )
     def title(self, text, **kwargs):
-        """Add a title .
-
-        Args:
-            text ([any]): [description]
+        """
+        Add a title above the map.
         """
         pass
 
