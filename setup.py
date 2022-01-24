@@ -21,7 +21,7 @@ def read(fname):
 
 
 version = None
-for line in read("ecmwf/geomaps/__init__.py").split("\n"):
+for line in read("magpye/__init__.py").split("\n"):
     if line.startswith("__version__"):
         version = line.split("=")[-1].strip()[1:-1]
 
@@ -30,7 +30,7 @@ assert version
 
 
 setuptools.setup(
-    name="ecmwf-geomaps",
+    name="magpye",
     version=version,
     description="A package to visualise geographical data",
     long_description=read("README.md"),
@@ -38,7 +38,7 @@ setuptools.setup(
     author="European Centre for Medium-Range Weather Forecasts (ECMWF)",
     author_email="software.support@ecmwf.int",
     license="Apache License Version 2.0",
-    url="https://github.com/ecmwf/ecmwf-geomaps",
+    url="https://github.com/ecmwf/magpye",
     packages=setuptools.find_namespace_packages(include=["ecmwf.*"]),
     include_package_data=True,
     install_requires=["magics", "ecmwflibs", "pyyaml"],
