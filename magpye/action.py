@@ -7,7 +7,7 @@
 # nor does it submit to any jurisdiction.
 #
 
-from . import presets
+from . import styles
 
 
 def action(magics_macro, conditions=None, default_preset=None, **valid_args):
@@ -63,7 +63,7 @@ def action(magics_macro, conditions=None, default_preset=None, **valid_args):
 
             if preset is not None:
                 mapped_kwargs = {
-                    **presets.get(preset, method.__name__),
+                    **styles.get(preset, method.__name__),
                     **mapped_kwargs,
                 }
 
