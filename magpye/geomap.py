@@ -11,7 +11,7 @@ import os
 
 import Magics.macro as magics
 
-from . import data, macro, styles
+from . import data, macro
 from .action import action
 
 ARROW_STYLES = ["angle", "triangle", "triangle2", "triangle3"]

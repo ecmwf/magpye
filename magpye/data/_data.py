@@ -6,7 +6,7 @@ class Data:
         self.geomap = geomap
         self.args = args
         self.kwargs = kwargs
-    
+
     def register(self, *args, **kwargs):
         self.geomap.register(*args, **kwargs)
 

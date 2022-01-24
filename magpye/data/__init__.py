@@ -1,7 +1,6 @@
 
 import os
 
-from .. import macro
 from . import ecdata, grib, netcdf, temporary
 
 
@@ -46,7 +45,7 @@ def detect_file(file_name):
         format_type = format_types[ext]
     except KeyError:
         f"unrecognised extension '.{ext}'; try grib or netcdf instead"
-    
+
     return {
         "grib": grib.Grib,
         "netcdf": netcdf.NetCDF,

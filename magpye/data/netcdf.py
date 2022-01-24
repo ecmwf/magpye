@@ -5,7 +5,7 @@ from ._data import Data
 
 
 class NetCDF(Data):
-    
+
     @action(
         macro.mnetcdf,
         {

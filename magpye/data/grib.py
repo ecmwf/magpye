@@ -5,7 +5,7 @@ from ._data import Data
 
 
 class Grib(Data):
-    
+
     @action(
         macro.mgrib,
         {
