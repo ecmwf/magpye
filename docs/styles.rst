@@ -10,7 +10,7 @@ To create a map
      
      geomap = GeoMap(area_name="europe")
      geomap.coastlines(land_colour="grey")
-     geomap.contour_lines("styls/iso.grib", style = "black_i2")
+     geomap.contour_lines("style/iso.grib", style = "black_i2")
      geomap.show()
 
 .. image:: _static/examples/style.png
