@@ -1,4 +1,4 @@
-Examples
+Notebooks
 ========
 
 Here is a list of example notebooks to illustrate how to visualise data,

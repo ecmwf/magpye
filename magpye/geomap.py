@@ -18,7 +18,23 @@ ARROW_STYLES = ["angle", "triangle", "triangle2", "triangle3"]
 
 
 class GeoMap:
-    """Class for designing and plotting geospatial maps."""
+    """
+    Class for designing and plotting geospatial maps.
+    
+    Parameters
+    ----------
+    area_name : str, optional
+        The name of a an area (e.g. 'europe') with a pre-configured projection
+        and extent - see examples for a sample of valid area names.
+    projection : str, optional
+        The name of the map projection to use for this map. See examples for
+        a sample of valid projections.
+    extent : tuple, optional
+        A four-element list/tuple containing the latitude and longitude
+        extents to use in the map. These must be provided in the order: lower-
+        left latitude, lower-left longitude, upper-right latitude, upper-right
+        longitude.
+    """
 
     def __init__(self, *args, **kwargs):
         self._sources = []
@@ -84,6 +100,30 @@ class GeoMap:
         datestamp="page_id_line_date_plot",
     )
     def footer(self, *args, **kwargs):
+        """
+        Add a footer to the bottom of the plot, containing text and/or a logo.
+
+        Parameters
+        ----------
+        text : str, optional
+            A string of text to include in the footer.
+        font : str, default='sansserif'
+            The name of the font to use for footer text.
+        font_style : str, default='normal'
+            Style options for the footer font, e.g. `'bold'`.
+        font_size : float, optional
+            The font size to use, in cm.
+        font_colour : str, default='charcoal'
+            Either a hexadecimal colour or a named colour to use for the
+            footer font.
+        logo : bool or str, optional
+            The name of an organisation or project whose logo should be added
+            to the footer. Must be one of `'ecmwf'`, `'c3s'` or `'cams'` - or
+            `False` if no logo should be included (default).
+        datestamp : bool, optional
+            If `True`, the date and time at which the map was generated will
+            be included in the footer text.
+        """
         pass
 
     @action(
@@ -101,6 +141,23 @@ class GeoMap:
         line_thickness="map_rivers_thickness",
     )
     def rivers(self, *args, **kwargs):
+        """
+        Add rivers to the map.
+
+        Parameters
+        ----------
+        resolution : str, default='low'
+            The resolution of the rivers to be included in the map. Must be
+            one of `'low'`, `'medium'` or `'high'`.
+        line_colour : str, default='blue'
+            Either a hexadecimal colour or a named colour to use for the
+            river lines.
+        line_style : str, default='solid'
+            One of `'solid'`, `'dash'`, `'dot'`, `'chain_dash'`, or
+            `'chain_dot'`.
+        line_thickness : float, default=1.0
+            The thickness of the river lines.
+        """
         pass
 
     @action(
@@ -118,12 +175,35 @@ class GeoMap:
         },
         resolution="map_coastline_resolution",
         line_colour="map_coastline_colour",
-        land_colour="map_coastline_land_shade_colour",
-        sea_colour="map_coastline_sea_shade_colour",
         line_style="map_coastline_style",
         line_thickness="map_coastline_thickness",
+        land_colour="map_coastline_land_shade_colour",
+        ocean_colour="map_coastline_sea_shade_colour",
     )
     def coastlines(self, *args, **kwargs):
+        """
+        Add coastlines to the map.
+
+        Parameters
+        ----------
+        resolution : str, default='low'
+            The resolution of the coastlines to be included in the map. Must
+            be one of `'low'`, `'medium'` or `'high'`.
+        line_colour : str, default='black'
+            Either a hexadecimal colour or a named colour to use for the
+            coastlines.
+        line_style : str, default='solid'
+            One of `'solid'`, `'dash'`, `'dot'`, `'chain_dash'`, or
+            `'chain_dot'`.
+        line_thickness : float, default=1.0
+            The thickness of the coastlines.
+        land_colour : str, optional
+            Either a hexadecimal colour or a named colour to use for the fill
+            colour of areas within coastline polygons (i.e. land).
+        ocaen_colour : str, optional
+            Either a hexadecimal colour or a named colour to use for the fill
+            colour of areas outside coastlines (i.e. oceans).
+        """
         pass
 
     @action(
@@ -132,26 +212,80 @@ class GeoMap:
             "map_coastline": False,
             "map_grid": True,
         },
-        lat_increment="map_grid_latitude_increment",
-        lon_increment="map_grid_longitude_increment",
+        lat_frequency="map_grid_latitude_increment",
+        lon_frequency="map_grid_longitude_increment",
         lat_reference="map_grid_latitude_reference",
         lon_reference="map_grid_longitude_reference",
+        line_colour="map_grid_colour",
         line_style="map_grid_line_style",
         line_thickness="map_grid_thickness",
-        line_colour="map_grid_colour",
         labels="map_label",
         label_font="map_label_font_style",
-        label_colour="map_label_colour",
-        label_size="map_label_height",
+        label_font_size="map_label_height",
+        label_font_colour="map_label_colour",
         label_latitude_frequency="map_label_latitude_frequency",
-        label_longintude_frequency="map_label_longitude_frequency",
+        label_longitude_frequency="map_label_longitude_frequency",
         label_top_edge="map_label_top",
         label_bottom_edge="map_label_bottom",
         label_left_edge="map_label_left",
         label_right_edge="map_label_right",
     )
     def gridlines(self, *args, **kwargs):
+        """
+        Add gridlines to the map.
+
+        Parameters
+        ----------
+        lat_frequency : float, default=10
+            The interval in degrees of latitude between each latitude grid
+            line.
+        lon_frequency : float, default=20
+            The interval in degrees of longitude between each longitude grid
+            line.
+        lat_reference : float, default=0
+            The reference/starting latitude from which to begin drawing
+            latitude lines at a frequency given by `lat_frequency`.
+        lon_reference : float, default=0
+            The reference/starting longitude from which to begin drawing
+            longitude lines at a frequency given by `lon_frequency`.
+        line_colour : str, default='blue'
+            Either a hexadecimal colour or a named colour to use for the
+            river lines.
+        line_style : str, default='solid'
+            One of `'solid'`, `'dash'`, `'dot'`, `'chain_dash'`, or
+            `'chain_dot'`.
+        line_thickness : float, default=1.0
+            The thickness of the river lines.
+        labels : bool, optional
+            If `True`, gridlines will be given latitude and longitude labels.
+        label_font : str, default='sansserif'
+            The name of the font to use for gridline label text.
+        label_font_size : float, optional
+            The font size to use, in cm.
+        label_font_colour : str, default='charcoal'
+            Either a hexadecimal colour or a named colour to use for the
+            gridline label font.
+        label_latitude_frequency : int, optional
+            The frequency at which to label latitude gridlines. A frequency of
+            1 means every latitude gridline will be labelled.
+        label_longitude_frequency : int, optional
+            The frequency at which to label longitude gridlines. A frequency
+            of 1 means every longitude gridline will be labelled.
+        label_top_edge : bool, default=True
+            If `True`, labels will be drawn where gridlines intersect the top
+            edge/border of the map.
+        label_bottom_edge : bool, default=True
+            If `True`, labels will be drawn where gridlines intersect the
+            bottom edge/border of the map.
+        label_left_edge= : bool, default=True
+            If `True`, labels will be drawn where gridlines intersect the
+            left edge/border of the map.
+        label_right_edge : bool, default=True
+            If `True`, labels will be drawn where gridlines intersect the
+            right edge/border of the map.
+        """
         pass
+        
 
     @action(
         macro.mtext,
@@ -162,6 +296,11 @@ class GeoMap:
         text_colour="text_colour",
     )
     def title(self, text, **kwargs):
+        """Add a title .
+
+        Args:
+            text ([any]): [description]
+        """
         pass
 
     def _input(self, source, **kwargs):
@@ -475,6 +614,7 @@ class GeoMap:
         if nargs == 1:
             name, format = os.path.splitext(args[0])
             kwargs["output_name"] = name
+            kwargs["output_name_first_page_number"] = False
             kwargs["output_formats"] = [format.lstrip(".")]
         elif nargs > 1:
             raise TypeError(f"save expected at most 1 argument, got {nargs}")

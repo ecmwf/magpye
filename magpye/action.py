@@ -9,22 +9,26 @@
 
 from . import styles
 
+from functools import wraps
 
 def action(magics_macro, conditions=None, **valid_args):
-    """Decorator for generating figure methods.
-
-    Args:
-        magics_macro: The Magics macro to execute for this action.
-        condition (dict): A dctionary of conditional variables which are
-            required for the given action to execute on the given macro.
-            Values can be sub-dictionaries, indicating that the condition is
-            only required when a specific argument is passed.
-        valid_args (dict): A mapping of argument names to their Magics
-            counterparts.
-
     """
+    Decorator for generating figure methods.
 
+    Parameters
+    ----------
+    magics_macro : magpye.macro.Macro
+        The Magics macro to execute for this action.
+    condition : dict
+        A dctionary of conditional variables which are
+        required for the given action to execute on the given macro.
+        Values can be sub-dictionaries, indicating that the condition is
+        only required when a specific argument is passed.
+    valid_args : dict
+        A mapping of argument names to their Magics counterparts.
+    """    
     def decorator(method):
+        @wraps(method)
         def wrapper(self, *args, style=None, z_index=1, **kwargs):
             for i, arg in enumerate(args):
                 try:
