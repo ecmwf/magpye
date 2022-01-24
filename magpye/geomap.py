@@ -11,7 +11,7 @@ import os
 
 import Magics.macro as magics
 
-from . import data, macro, presets
+from . import data, macro, styles
 from .action import action
 
 ARROW_STYLES = ["angle", "triangle", "triangle2", "triangle3"]
@@ -32,7 +32,7 @@ class GeoMap:
 
     def apply_preset(self, preset):
         if preset is not None:
-            macro_presets = presets.get(preset)
+            macro_presets = styles.get(preset)
             for macro_preset in macro_presets:
                 method = list(macro_preset)[0]
                 args = macro_preset[method]
