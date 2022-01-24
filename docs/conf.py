@@ -26,7 +26,7 @@ source_suffix = ".rst"
 master_doc = "index"
 pygments_style = "sphinx"
 html_theme_options = {"logo_only": True}
-html_logo = "_static/magpye.svg"
+html_logo = "_static/magpye.png"
 
 
 # -- Project information -----------------------------------------------------
