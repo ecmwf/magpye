@@ -7,9 +7,10 @@
 # nor does it submit to any jurisdiction.
 #
 
+from functools import wraps
+
 from . import styles
 
-from functools import wraps
 
 def action(magics_macro, conditions=None, **valid_args):
     """
@@ -26,7 +27,8 @@ def action(magics_macro, conditions=None, **valid_args):
         only required when a specific argument is passed.
     valid_args : dict
         A mapping of argument names to their Magics counterparts.
-    """    
+    """
+
     def decorator(method):
         @wraps(method)
         def wrapper(self, *args, style=None, z_index=1, **kwargs):

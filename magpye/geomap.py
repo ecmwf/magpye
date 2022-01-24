@@ -20,7 +20,7 @@ ARROW_STYLES = ["angle", "triangle", "triangle2", "triangle3"]
 class GeoMap:
     """
     Class for designing and plotting geospatial maps.
-    
+
     Parameters
     ----------
     area_name : str, optional
@@ -285,7 +285,6 @@ class GeoMap:
             right edge/border of the map.
         """
         pass
-        
 
     @action(
         macro.mtext,
