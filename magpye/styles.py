@@ -15,10 +15,17 @@ from . import config
 
 
 def get(style, method_name):
+    method_name = method_name.lstrip('_')
     yaml_file = os.path.join(config.PRESETS, method_name, f"{style}.yaml")
     if not os.path.exists(yaml_file):
         raise ValueError(f"no preset '{style}' defined for {method_name}()")
 
     with open(yaml_file, "r") as f:
-        kwargs = yaml.load(f, Loader=yaml.SafeLoader)
+        style_definition = yaml.load(f, Loader=yaml.SafeLoader)
+    
+    try:
+        kwargs = style_definition["style"]
+    except KeyError:
+        raise TypeError("style definition requires 'style' key")
+
     return kwargs

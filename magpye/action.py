@@ -10,7 +10,7 @@
 from . import styles
 
 
-def action(magics_macro, conditions=None, default_preset=None, **valid_args):
+def action(magics_macro, conditions=None, **valid_args):
     """Decorator for generating figure methods.
 
     Args:
@@ -19,15 +19,13 @@ def action(magics_macro, conditions=None, default_preset=None, **valid_args):
             required for the given action to execute on the given macro.
             Values can be sub-dictionaries, indicating that the condition is
             only required when a specific argument is passed.
-        default_preset (str): The name of the default preset to use for this
-            action.
         valid_args (dict): A mapping of argument names to their Magics
             counterparts.
 
     """
 
     def decorator(method):
-        def wrapper(self, *args, preset=None, z_index=1, **kwargs):
+        def wrapper(self, *args, style=None, z_index=1, **kwargs):
             for i, arg in enumerate(args):
                 try:
                     kwarg = list(valid_args)[i]
@@ -61,9 +59,9 @@ def action(magics_macro, conditions=None, default_preset=None, **valid_args):
                 else:
                     mapped_kwargs[mapped_key] = value
 
-            if preset is not None:
+            if style is not None:
                 mapped_kwargs = {
-                    **styles.get(preset, method.__name__),
+                    **styles.get(style, method.__name__),
                     **mapped_kwargs,
                 }
 

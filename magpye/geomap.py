@@ -20,27 +20,13 @@ ARROW_STYLES = ["angle", "triangle", "triangle2", "triangle3"]
 class GeoMap:
     """Class for designing and plotting geospatial maps."""
 
-    def __init__(self, *args, preset=None, **kwargs):
+    def __init__(self, *args, **kwargs):
         self._sources = []
 
         self.queue = []
         self._map(*args, **kwargs)
 
-        self.apply_preset(preset)
-
         self._show_legend = False
-
-    def apply_preset(self, preset):
-        if preset is not None:
-            macro_presets = styles.get(preset)
-            for macro_preset in macro_presets:
-                method = list(macro_preset)[0]
-                args = macro_preset[method]
-                getattr(self, method)(
-                    preset=args.get("preset"),
-                    z_index=args.get("z_index"),
-                    **args.get("kwargs", dict()),
-                )
 
     def register(self, item):
         if item.__class__.__name__ == "page":
@@ -92,8 +78,8 @@ class GeoMap:
         text="page_id_line_user_text",
         font="page_id_line_font",
         font_style="page_id_line_font_style",
-        text_size="page_id_line_height",
-        text_colour="page_id_line_colour",
+        font_size="page_id_line_height",
+        font_colour="page_id_line_colour",
         logo="page_id_line_logo_name",
         datestamp="page_id_line_date_plot",
     )
@@ -188,23 +174,19 @@ class GeoMap:
         self._sources.append(source)
         source.get(**kwargs)
 
-    def contour_lines(self, source, *args, preset=None, **kwargs):
+    def contour_lines(self, source, *args, style=None, **kwargs):
         """
         Plot line contours on a map.
         """
         self._input(source)
-        self._contour_lines(*args, preset=preset, **kwargs)
+        self._contour_lines(*args, style=style, **kwargs)
 
-    def contour_shaded(self, source, *args, style=None, preset=None, **kwargs):
+    def contour_shaded(self, source, *args, style=None, **kwargs):
         """
         Plot filled contours on a map.
         """
         self._input(source)
-
-        if isinstance(style, str):
-            kwargs["contour_shade_palette_name"] = style
-
-        self._shaded_contours(*args, preset=preset, **kwargs)
+        self._contour_shaded(*args, style=style, **kwargs)
 
     def arrows(
         self,
@@ -214,7 +196,7 @@ class GeoMap:
         speed=None,
         direction=None,
         shaded=False,
-        preset=None,
+        style=None,
         **kwargs,
     ):
         """
@@ -229,7 +211,7 @@ class GeoMap:
 
         method = self._arrows if not shaded else self._arrows_shaded
 
-        return self._vector(method, preset=preset, **kwargs)
+        return self._vector(method, style=style, **kwargs)
 
     def _vector(self, plotter, *args, **kwargs):
 
@@ -279,7 +261,7 @@ class GeoMap:
         contour_method="contour_method",
         legend="legend",
     )
-    def _shaded_contours(self, *args, **kwargs):
+    def _contour_shaded(self, *args, **kwargs):
         pass
 
     @action(
