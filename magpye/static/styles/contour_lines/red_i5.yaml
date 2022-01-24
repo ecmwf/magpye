@@ -1,5 +1,4 @@
 ---
 style:
   contour_automatic_setting: "style_name"
-  contour_style_name: "ct_blk_i5_t2"
-  legend: "off"
+  contour_style_name: "ct_red_i5_t2"
