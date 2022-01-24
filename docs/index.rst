@@ -20,8 +20,8 @@ Documentation
 
 * :doc:`overview`
 * :doc:`installing`
-* :doc:`firststeps`
 * :doc:`notebooks`
+* :doc:`geoareas`
 
 .. toctree::
    :maxdepth: 1
@@ -30,14 +30,14 @@ Documentation
 
    overview
    installing
-   firststeps
    notebooks
+   geoareas
 
 
 **Reference**
 
 * :doc:`reference/api`
-* 
+  
 .. toctree::
    :maxdepth: 1
    :hidden:
