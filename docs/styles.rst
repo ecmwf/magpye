@@ -6,7 +6,7 @@ Here is the list of the predefined styles define in **magpye**,
 To create a map
 
 .. code-block:: python
-   
+
    from magpye import GeoMap
    
    geomap = GeoMap(area_name="europe")
@@ -18,7 +18,7 @@ To create a map
    :width: 50%
 
 .. toctree::
-    :maxdepth: 2
-    :glob:
+   :maxdepth: 2
+   :glob:
 
     styles/*
