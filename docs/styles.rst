@@ -11,7 +11,7 @@ To create a map
    
    geomap = GeoMap(area_name="europe")
    geomap.coastlines(land_colour="grey")
-   # geomap.contour_lines("style/iso.grib", style = "black_i5")
+   geomap.contour_lines("style/iso.grib", style = "black_i5")
    geomap.show()
 
 .. image:: _static/examples/styles.png
@@ -21,4 +21,4 @@ To create a map
    :maxdepth: 2
    :glob:
 
-    styles/*
+   styles/*
