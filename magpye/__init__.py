@@ -9,6 +9,6 @@
 
 from .geomap import GeoMap
 
-__version__ = "0.1.2"
+__version__ = "0.1.3"
 
 __all__ = ["GeoMap"]

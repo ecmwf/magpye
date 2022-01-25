@@ -1,1 +1,1 @@
-recursive-include ecmwf/*/* *.yaml
+recursive-include magpye/* magpye/*/* *.yaml
