@@ -1,0 +1,5 @@
+---
+style:
+  contour_automatic_setting: "style_name"
+  contour_style_name: "sh_mag_f0t10000"
+  legend: "on"
