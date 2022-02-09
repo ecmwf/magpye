@@ -6,6 +6,9 @@ arctic
 
 | area_name = "arctic"  
 
+.. image:: /_static/geoareas/arctic.png
+    :width: 400
+
 | **magpye** has a list of predefined geographical areas.    
 | Options are available to customise your Coastlines. 
 

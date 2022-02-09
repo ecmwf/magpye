@@ -6,6 +6,9 @@ north_atlantic
 
 | area_name = "north_atlantic"  
 
+.. image:: /_static/geoareas/north_atlantic.png
+    :width: 400
+
 | **magpye** has a list of predefined geographical areas.    
 | Options are available to customise your Coastlines. 
 

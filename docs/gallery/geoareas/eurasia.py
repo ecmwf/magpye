@@ -6,6 +6,9 @@ eurasia
 
 | area_name = "eurasia"  
 
+.. image:: /_static/geoareas/eurasia.png
+    :width: 400
+
 | **magpye** has a list of predefined geographical areas.    
 | Options are available to customise your Coastlines. 
 

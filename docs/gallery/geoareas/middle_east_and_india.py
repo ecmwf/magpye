@@ -6,6 +6,9 @@ middle_east_and_india
 
 | area_name = "middle_east_and_india"  
 
+.. image:: /_static/geoareas/middle_east_and_india.png
+    :width: 400
+
 | **magpye** has a list of predefined geographical areas.    
 | Options are available to customise your Coastlines. 
 

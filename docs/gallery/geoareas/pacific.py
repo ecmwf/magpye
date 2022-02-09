@@ -6,6 +6,9 @@ pacific
 
 | area_name = "pacific"  
 
+.. image:: /_static/geoareas/pacific.png
+    :width: 400
+
 | **magpye** has a list of predefined geographical areas.    
 | Options are available to customise your Coastlines. 
 

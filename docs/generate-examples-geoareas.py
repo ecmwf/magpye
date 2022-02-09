@@ -18,15 +18,10 @@ areas = magics.predefined_areas()
 
 for area in areas:
     print (area)
-
     map = GeoMap(area_name=area)
     map.coastlines(land_colour="grey")
     map.gridlines(line_style="dash")
-    map.save("_static/geoareas/{}.png".format(area))
-
-
-
-  
+    map.save("_static/geoareas/{}.png".format(area))  
     fname = "gallery/geoareas/{}.py".format(area)
 
 
@@ -37,6 +32,9 @@ for area in areas:
 ==================
 
 | area_name = "{area}"  
+
+.. image:: /_static/geoareas/{area}.png
+    :width: 400
 
 | **magpye** has a list of predefined geographical areas.    
 | Options are available to customise your Coastlines. 

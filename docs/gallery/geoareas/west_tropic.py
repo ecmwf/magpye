@@ -6,6 +6,9 @@ west_tropic
 
 | area_name = "west_tropic"  
 
+.. image:: /_static/geoareas/west_tropic.png
+    :width: 400
+
 | **magpye** has a list of predefined geographical areas.    
 | Options are available to customise your Coastlines. 
 

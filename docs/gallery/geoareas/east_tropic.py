@@ -6,6 +6,9 @@ east_tropic
 
 | area_name = "east_tropic"  
 
+.. image:: /_static/geoareas/east_tropic.png
+    :width: 400
+
 | **magpye** has a list of predefined geographical areas.    
 | Options are available to customise your Coastlines. 
 

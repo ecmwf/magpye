@@ -6,6 +6,9 @@ north_east_europe
 
 | area_name = "north_east_europe"  
 
+.. image:: /_static/geoareas/north_east_europe.png
+    :width: 400
+
 | **magpye** has a list of predefined geographical areas.    
 | Options are available to customise your Coastlines. 
 

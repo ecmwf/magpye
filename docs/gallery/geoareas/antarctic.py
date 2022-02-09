@@ -6,6 +6,9 @@ antarctic
 
 | area_name = "antarctic"  
 
+.. image:: /_static/geoareas/antarctic.png
+    :width: 400
+
 | **magpye** has a list of predefined geographical areas.    
 | Options are available to customise your Coastlines. 
 

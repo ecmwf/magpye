@@ -6,6 +6,9 @@ south_west_europe
 
 | area_name = "south_west_europe"  
 
+.. image:: /_static/geoareas/south_west_europe.png
+    :width: 400
+
 | **magpye** has a list of predefined geographical areas.    
 | Options are available to customise your Coastlines. 
 
