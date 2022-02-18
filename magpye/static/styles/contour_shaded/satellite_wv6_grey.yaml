@@ -1,0 +1,5 @@
+---
+style:
+  contour_automatic_setting: "style_name"
+  contour_style_name: "sim_image_wv_500"
+  legend: "on"

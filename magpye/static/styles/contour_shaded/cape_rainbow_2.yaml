@@ -1,0 +1,5 @@
+---
+style:
+  contour_automatic_setting: "style_name"
+  contour_style_name: "range_100_4500"
+  legend: "on"
