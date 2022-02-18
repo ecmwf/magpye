@@ -11,8 +11,8 @@
 
 
 import Magics.macro as magics
-from magpye import GeoMap
 
+from magpye import GeoMap
 
 areas = magics.predefined_areas()
 
