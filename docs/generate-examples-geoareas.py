@@ -10,9 +10,9 @@
 
 
 
-
-from magpye import GeoMap
 import Magics.macro as magics
+from magpye import GeoMap
+
 
 areas = magics.predefined_areas()
 
