@@ -1,5 +1,3 @@
-
-
 """
 middle_east_and_india
 ==================
@@ -25,5 +23,3 @@ map.show()
 
 
 # sphinx_gallery_thumbnail_path = '_static/geoareas/middle_east_and_india.png'
-
-    

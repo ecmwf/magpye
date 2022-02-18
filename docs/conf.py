@@ -68,7 +68,7 @@ extensions = [
     "IPython.sphinxext.ipython_directive",
     "IPython.sphinxext.ipython_console_highlighting",
     "sphinx.ext.graphviz",
-    'sphinx_gallery.gen_gallery',
+    "sphinx_gallery.gen_gallery",
     # "sphinx-prompt",
     # "climetlab.sphinxext.sources",
     # "climetlab.sphinxext.command_output",
@@ -127,6 +127,8 @@ graphviz_output_format = "svg"
 
 
 sphinx_gallery_conf = {
-     'examples_dirs': ['gallery/geoareas'],   # path to your example scripts
-     'gallery_dirs': ['auto_gallery/geoareas'],  # path to where to save gallery generated output
+    "examples_dirs": ["gallery/geoareas"],  # path to your example scripts
+    "gallery_dirs": [
+        "auto_gallery/geoareas"
+    ],  # path to where to save gallery generated output
 }

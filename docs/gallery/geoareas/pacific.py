@@ -1,5 +1,3 @@
-
-
 """
 pacific
 ==================
@@ -25,5 +23,3 @@ map.show()
 
 
 # sphinx_gallery_thumbnail_path = '_static/geoareas/pacific.png'
-
-    

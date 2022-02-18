@@ -1,5 +1,3 @@
-
-
 """
 south_west_europe
 ==================
@@ -25,5 +23,3 @@ map.show()
 
 
 # sphinx_gallery_thumbnail_path = '_static/geoareas/south_west_europe.png'
-
-    

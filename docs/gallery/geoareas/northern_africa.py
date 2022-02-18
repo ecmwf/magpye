@@ -1,5 +1,3 @@
-
-
 """
 northern_africa
 ==================
@@ -25,5 +23,3 @@ map.show()
 
 
 # sphinx_gallery_thumbnail_path = '_static/geoareas/northern_africa.png'
-
-    

@@ -9,7 +9,6 @@
 #
 
 
-
 import Magics.macro as magics
 
 from magpye import GeoMap
@@ -17,13 +16,12 @@ from magpye import GeoMap
 areas = magics.predefined_areas()
 
 for area in areas:
-    print (area)
+    print(area)
     map = GeoMap(area_name=area)
     map.coastlines(land_colour="grey")
     map.gridlines(line_style="dash")
-    map.save("_static/geoareas/{}.png".format(area))  
+    map.save("_static/geoareas/{}.png".format(area))
     fname = "gallery/geoareas/{}.py".format(area)
-
 
     script = '''
 
@@ -53,9 +51,9 @@ map.show()
 
 # sphinx_gallery_thumbnail_path = '_static/geoareas/{area}.png'
 
-    '''.format(area=area)
+    '''.format(
+        area=area
+    )
 
     with open(fname, "+w") as f:
         f.write(script)
-
-

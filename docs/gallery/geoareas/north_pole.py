@@ -1,5 +1,3 @@
-
-
 """
 north_pole
 ==================
@@ -25,5 +23,3 @@ map.show()
 
 
 # sphinx_gallery_thumbnail_path = '_static/geoareas/north_pole.png'
-
-    

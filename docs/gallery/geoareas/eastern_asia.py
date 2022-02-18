@@ -1,5 +1,3 @@
-
-
 """
 eastern_asia
 ==================
@@ -25,5 +23,3 @@ map.show()
 
 
 # sphinx_gallery_thumbnail_path = '_static/geoareas/eastern_asia.png'
-
-    
