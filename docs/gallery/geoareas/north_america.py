@@ -2,13 +2,13 @@
 north_america
 ==================
 
-| area_name = "north_america"  
+| area_name = "north_america"
 
 .. image:: /_static/geoareas/north_america.png
     :width: 400
 
-| **magpye** has a list of predefined geographical areas.    
-| Options are available to customise your Coastlines. 
+| **magpye** has a list of predefined geographical areas.
+| Options are available to customise your Coastlines.
 
 """
 

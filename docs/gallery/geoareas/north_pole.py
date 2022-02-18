@@ -2,13 +2,13 @@
 north_pole
 ==================
 
-| area_name = "north_pole"  
+| area_name = "north_pole"
 
 .. image:: /_static/geoareas/north_pole.png
     :width: 400
 
-| **magpye** has a list of predefined geographical areas.    
-| Options are available to customise your Coastlines. 
+| **magpye** has a list of predefined geographical areas.
+| Options are available to customise your Coastlines.
 
 """
 

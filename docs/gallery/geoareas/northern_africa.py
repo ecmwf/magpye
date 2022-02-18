@@ -2,13 +2,13 @@
 northern_africa
 ==================
 
-| area_name = "northern_africa"  
+| area_name = "northern_africa"
 
 .. image:: /_static/geoareas/northern_africa.png
     :width: 400
 
-| **magpye** has a list of predefined geographical areas.    
-| Options are available to customise your Coastlines. 
+| **magpye** has a list of predefined geographical areas.
+| Options are available to customise your Coastlines.
 
 """
 

@@ -2,13 +2,13 @@
 southern_asia
 ==================
 
-| area_name = "southern_asia"  
+| area_name = "southern_asia"
 
 .. image:: /_static/geoareas/southern_asia.png
     :width: 400
 
-| **magpye** has a list of predefined geographical areas.    
-| Options are available to customise your Coastlines. 
+| **magpye** has a list of predefined geographical areas.
+| Options are available to customise your Coastlines.
 
 """
 

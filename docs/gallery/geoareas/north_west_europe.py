@@ -2,13 +2,13 @@
 north_west_europe
 ==================
 
-| area_name = "north_west_europe"  
+| area_name = "north_west_europe"
 
 .. image:: /_static/geoareas/north_west_europe.png
     :width: 400
 
-| **magpye** has a list of predefined geographical areas.    
-| Options are available to customise your Coastlines. 
+| **magpye** has a list of predefined geographical areas.
+| Options are available to customise your Coastlines.
 
 """
 

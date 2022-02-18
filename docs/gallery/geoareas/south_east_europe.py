@@ -2,13 +2,13 @@
 south_east_europe
 ==================
 
-| area_name = "south_east_europe"  
+| area_name = "south_east_europe"
 
 .. image:: /_static/geoareas/south_east_europe.png
     :width: 400
 
-| **magpye** has a list of predefined geographical areas.    
-| Options are available to customise your Coastlines. 
+| **magpye** has a list of predefined geographical areas.
+| Options are available to customise your Coastlines.
 
 """
 

@@ -2,13 +2,13 @@
 central_europe
 ==================
 
-| area_name = "central_europe"  
+| area_name = "central_europe"
 
 .. image:: /_static/geoareas/central_europe.png
     :width: 400
 
-| **magpye** has a list of predefined geographical areas.    
-| Options are available to customise your Coastlines. 
+| **magpye** has a list of predefined geographical areas.
+| Options are available to customise your Coastlines.
 
 """
 

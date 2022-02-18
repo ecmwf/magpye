@@ -29,13 +29,13 @@ for area in areas:
 {area}
 ==================
 
-| area_name = "{area}"  
+| area_name = "{area}"
 
 .. image:: /_static/geoareas/{area}.png
     :width: 400
 
-| **magpye** has a list of predefined geographical areas.    
-| Options are available to customise your Coastlines. 
+| **magpye** has a list of predefined geographical areas.
+| Options are available to customise your Coastlines.
 
 """
 

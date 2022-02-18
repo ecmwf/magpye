@@ -2,13 +2,13 @@
 south_atlantic_and_indian_ocean
 ==================
 
-| area_name = "south_atlantic_and_indian_ocean"  
+| area_name = "south_atlantic_and_indian_ocean"
 
 .. image:: /_static/geoareas/south_atlantic_and_indian_ocean.png
     :width: 400
 
-| **magpye** has a list of predefined geographical areas.    
-| Options are available to customise your Coastlines. 
+| **magpye** has a list of predefined geographical areas.
+| Options are available to customise your Coastlines.
 
 """
 

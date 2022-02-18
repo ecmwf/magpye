@@ -2,13 +2,13 @@
 africa
 ==================
 
-| area_name = "africa"  
+| area_name = "africa"
 
 .. image:: /_static/geoareas/africa.png
     :width: 400
 
-| **magpye** has a list of predefined geographical areas.    
-| Options are available to customise your Coastlines. 
+| **magpye** has a list of predefined geographical areas.
+| Options are available to customise your Coastlines.
 
 """
 

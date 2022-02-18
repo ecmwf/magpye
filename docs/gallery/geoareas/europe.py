@@ -2,13 +2,13 @@
 europe
 ==================
 
-| area_name = "europe"  
+| area_name = "europe"
 
 .. image:: /_static/geoareas/europe.png
     :width: 400
 
-| **magpye** has a list of predefined geographical areas.    
-| Options are available to customise your Coastlines. 
+| **magpye** has a list of predefined geographical areas.
+| Options are available to customise your Coastlines.
 
 """
 

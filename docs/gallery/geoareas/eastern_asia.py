@@ -2,13 +2,13 @@
 eastern_asia
 ==================
 
-| area_name = "eastern_asia"  
+| area_name = "eastern_asia"
 
 .. image:: /_static/geoareas/eastern_asia.png
     :width: 400
 
-| **magpye** has a list of predefined geographical areas.    
-| Options are available to customise your Coastlines. 
+| **magpye** has a list of predefined geographical areas.
+| Options are available to customise your Coastlines.
 
 """
 

@@ -2,13 +2,13 @@
 southern_africa
 ==================
 
-| area_name = "southern_africa"  
+| area_name = "southern_africa"
 
 .. image:: /_static/geoareas/southern_africa.png
     :width: 400
 
-| **magpye** has a list of predefined geographical areas.    
-| Options are available to customise your Coastlines. 
+| **magpye** has a list of predefined geographical areas.
+| Options are available to customise your Coastlines.
 
 """
 

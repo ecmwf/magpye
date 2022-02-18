@@ -2,13 +2,13 @@
 global
 ==================
 
-| area_name = "global"  
+| area_name = "global"
 
 .. image:: /_static/geoareas/global.png
     :width: 400
 
-| **magpye** has a list of predefined geographical areas.    
-| Options are available to customise your Coastlines. 
+| **magpye** has a list of predefined geographical areas.
+| Options are available to customise your Coastlines.
 
 """
 

@@ -2,13 +2,13 @@
 australasia
 ==================
 
-| area_name = "australasia"  
+| area_name = "australasia"
 
 .. image:: /_static/geoareas/australasia.png
     :width: 400
 
-| **magpye** has a list of predefined geographical areas.    
-| Options are available to customise your Coastlines. 
+| **magpye** has a list of predefined geographical areas.
+| Options are available to customise your Coastlines.
 
 """
 
