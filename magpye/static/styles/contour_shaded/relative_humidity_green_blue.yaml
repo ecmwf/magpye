@@ -1,5 +1,6 @@
 ---
 style:
   contour_automatic_setting: "style_name"
-  contour_style_name: "sh_blu_f008t25"
+  contour_style_name: "sh_grnblu_f65t100i15"
   legend: "on"
+data: "r.grib"

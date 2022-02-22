@@ -9,3 +9,4 @@ style:
   contour_level_selection_type: 'interval'
   contour_line_colour: 'black'
   contour_line_thickness: 2
+data: "10si.grib"

@@ -3,3 +3,4 @@ style:
   contour_automatic_setting: "style_name"
   contour_style_name: "sh_grn_f0t100lst"
   legend: 'on'
+data: "tpg1.grib"

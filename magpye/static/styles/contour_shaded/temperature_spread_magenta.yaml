@@ -1,5 +1,6 @@
 ---
 style:
   contour_automatic_setting: "style_name"
-  contour_style_name: "sh_blured_f05t300lst"
+  contour_style_name: "sh_blu_f008t25"
   legend: "on"
+data: "2t_spread.grib"

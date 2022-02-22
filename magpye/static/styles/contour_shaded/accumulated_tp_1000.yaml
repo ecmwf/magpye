@@ -11,3 +11,4 @@ style:
   contour_shade_colour_method: "list"
   contour_shade_method: "area_fill"
   legend: "on"
+data: "tp_acc.grib"

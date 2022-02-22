@@ -1,6 +1,6 @@
 ---
 style:
   contour_automatic_setting: "style_name"
-  contour_style_name: "sh_blup_f0t100lst"
+  contour_style_name: "sh_all_fM48t56i4"
   legend: "on"
-data: "tpg1.grib"
+data: "2t.grib"
