@@ -11,3 +11,4 @@ style:
   contour_shade_colour_list: ["red","orange","yellow","green","RGB(0.40,0.40,0.95)","rgb(0.6,0.6,0.6)"]
   contour_shade_colour_method: "list"
   contour_shade_method: "area_fill"
+data: "vis.grib"
