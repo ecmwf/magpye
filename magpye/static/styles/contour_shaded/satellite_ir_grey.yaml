@@ -3,3 +3,4 @@ style:
   contour_automatic_setting: "style_name"
   contour_style_name: "sim_image_ir_fixed_range"
   legend: "on"
+data: "clbt_9.grib"
