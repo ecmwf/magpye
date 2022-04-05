@@ -1,5 +1,6 @@
 ---
 style:
   contour_automatic_setting: "style_name"
-  contour_style_name: "sh_blured_fM16t50_thickness"
+  contour_style_name: "sh_all_f0t20lst"
   legend: "on"
+data: "swh.grib"

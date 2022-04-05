@@ -1,0 +1,6 @@
+---
+style:
+  contour_automatic_setting: "style_name"
+  contour_style_name: "sh_blured_fM16t50_thickness"
+  legend: "on"
+data: "thickness.grib"
