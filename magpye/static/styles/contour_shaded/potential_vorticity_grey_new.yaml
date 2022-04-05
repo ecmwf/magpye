@@ -3,3 +3,4 @@ style:
   contour_automatic_setting: "style_name"
   contour_style_name: "sh_gry_f0t20lst"
   legend: "on"
+data: "pv.grib"

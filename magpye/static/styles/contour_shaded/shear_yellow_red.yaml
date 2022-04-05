@@ -3,3 +3,4 @@ style:
   contour_automatic_setting: "style_name"
   contour_style_name: "sh_red_f5t70lst"
   legend: "on"
+data: "shear.grib"
