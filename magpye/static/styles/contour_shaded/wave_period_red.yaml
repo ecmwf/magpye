@@ -1,0 +1,6 @@
+---
+style:
+  contour_automatic_setting: "style_name"
+  contour_style_name: "sh_wave_f0t10_red"
+  legend: "on"
+data: "h1012.grib"

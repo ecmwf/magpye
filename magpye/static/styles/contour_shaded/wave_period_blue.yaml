@@ -1,0 +1,6 @@
+---
+style:
+  contour_automatic_setting: "style_name"
+  contour_style_name: "sh_wave_f002t1_blue"
+  legend: "on"
+data: "h2530.grib"

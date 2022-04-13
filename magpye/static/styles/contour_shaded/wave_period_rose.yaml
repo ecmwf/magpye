@@ -1,0 +1,6 @@
+---
+style:
+  contour_automatic_setting: "style_name"
+  contour_style_name: "sh_wave_f005t5_rose"
+  legend: "on"
+data: "h2125.grib"
