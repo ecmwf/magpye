@@ -66,10 +66,11 @@ def action(magics_macro, conditions=None, **valid_args):
                     mapped_kwargs[mapped_key] = value
 
             if style is not None:
-                mapped_kwargs = {
-                    **styles.get(style, method.__name__),
-                    **mapped_kwargs,
-                }
+                if isinstance(style, styles.Style):
+                    extra_kwargs = style._magics_kwargs
+                else:
+                    extra_kwargs = styles.get(style, method.__name__)
+                mapped_kwargs = {**extra_kwargs, **mapped_kwargs}
 
             if conditions is not None:
                 for key, value in conditions.items():

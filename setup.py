@@ -41,7 +41,7 @@ setuptools.setup(
     url="https://github.com/ecmwf/magpye",
     packages=setuptools.find_namespace_packages(),
     include_package_data=True,
-    install_requires=["magics", "ecmwflibs", "pyyaml"],
+    install_requires=["magics", "ecmwflibs", "pyyaml", "matplotlib"],
     zip_safe=True,
     keywords="tool",
     classifiers=[

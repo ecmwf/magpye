@@ -11,7 +11,7 @@ import os
 
 import Magics.macro as magics
 
-from . import data, macro
+from . import data, macro, styles
 from .action import action
 
 ARROW_STYLES = ["angle", "triangle", "triangle2", "triangle3"]
@@ -317,7 +317,7 @@ class GeoMap:
         self._input(source)
         self._contour_lines(*args, style=style, **kwargs)
 
-    def contour_shaded(self, source, *args, style=None, **kwargs):
+    def contour_shaded(self, source, *args, style=styles.DEFAULT, **kwargs):
         """
         Plot filled contours on a map.
         """
