@@ -34,7 +34,6 @@ def get(style, method_name):
 
 
 class Style:
-
     def __init__(self, arg, levels=None, number_of_levels=10, exact_levels=True):
         if isinstance(arg, str):
             cmap = cm.get_cmap(arg)
@@ -42,29 +41,29 @@ class Style:
                 levels = list(levels)
                 number_of_levels = len(levels) - 1
             self.colours = [
-                colors.rgb2hex(cmap(i))
-                for i in np.linspace(0, 1, number_of_levels)]
+                colors.rgb2hex(cmap(i)) for i in np.linspace(0, 1, number_of_levels)
+            ]
             self.number_of_levels = number_of_levels + 1
         else:
             self.colours = arg
             self.number_of_levels = len(self.colours) + 1
         self.levels = levels
         self.exact_levels = exact_levels
-    
+
     @property
     def _magics_kwargs(self):
         # Many of the mcont settings are controlled by GeoMap
         # e.g. contour_shade_method: area_fill
         kwargs = {
-            'contour_shade_colour_list': self.colours,
-            'contour_shade_colour_method': "list",
+            "contour_shade_colour_list": self.colours,
+            "contour_shade_colour_method": "list",
             "contour_level_count": self.number_of_levels,
         }
         if self.levels is not None:
-            kwargs['contour_level_list'] = self.levels
+            kwargs["contour_level_list"] = self.levels
         if self.exact_levels:
-            kwargs['contour_level_tolerance'] = 0
+            kwargs["contour_level_tolerance"] = 0
         return kwargs
 
 
-DEFAULT = Style('inferno')
+DEFAULT = Style("inferno")
