@@ -349,6 +349,31 @@ class GeoMap:
 
         return self._vector(method, style=style, **kwargs)
 
+    def flags(
+        self,
+        *,
+        u=None,
+        v=None,
+        speed=None,
+        direction=None,
+        shaded=False,
+        style=None,
+        **kwargs,
+    ):
+        """
+        Plot wind flags on a map.
+        """
+        if all((u, v)):
+            self._vector_input(u, v, wind_mode="uv")
+        elif all((speed, direction)):
+            self._vector_input(speed, direction, wind_mode="sd")
+        else:
+            raise TypeError("flags() requires u and v OR speed and direction")
+
+        method = self._flags if not shaded else self._flags_shaded
+
+        return self._vector(method, style=style, **kwargs)
+
     def _vector(self, plotter, *args, **kwargs):
 
         arrow_head = kwargs.pop("arrow_head", None)
@@ -446,28 +471,21 @@ class GeoMap:
         macro.mwind,
         {
             "legend": False,
+            "wind_field_type": "arrows",
             "wind_thinning_method": "automatic",
             "wind_arrow_calm_below": {"wind_arrow_calm_indicator": True},
-            "wind_flag_calm_below": {"wind_flag_calm_indicator": True},
         },
-        wind_style="wind_field_type",
-        colour=["wind_flag_colour", "wind_arrow_colour"],
-        flag_length="wind_flag_length",
-        flag_origin_marker="wind_flag_origin_marker",
-        flag_origin_size="wind_flag_origin_marker_size",
+        colour="wind_arrow_colour",
         density="wind_thinning_factor",
-        calm_threshold=["wind_arrow_calm_below", "wind_flag_calm_below"],
-        calm_indicator_size=[
-            "wind_arrow_calm_indicator_size",
-            "wind_flag_calm_indicator_size",
-        ],
+        calm_threshold="wind_arrow_calm_below",
+        calm_indicator_size="wind_arrow_calm_indicator_size",
         _arrow_shape="wind_arrow_head_shape",
         _arrow_ratio="wind_arrow_head_ratio",
-        max_speed=["wind_arrow_max_speed", "wind_flag_max_speed"],
-        min_speed=["wind_arrow_min_speed", "wind_flag_min_speed"],
-        arrow_origin="wind_arrow_origin_position",
-        line_thickness=["wind_arrow_thickness", "wind_flag_thickness"],
-        line_style=["wind_arrow_style", "wind_flag_style"],
+        max_speed="wind_arrow_max_speed",
+        min_speed="wind_arrow_min_speed",
+        origin="wind_arrow_origin_position",
+        line_thickness="wind_arrow_thickness",
+        line_style="wind_arrow_style",
         legend="legend",
     )
     def _arrows(self, *args, **kwargs):
@@ -477,10 +495,34 @@ class GeoMap:
         macro.mwind,
         {
             "legend": False,
+            "wind_field_type": "flags",
+            "wind_thinning_method": "automatic",
+            "wind_flag_calm_below": {"wind_flag_calm_indicator": True},
+        },
+        colour="wind_flag_colour",
+        length="wind_flag_length",
+        origin_marker="wind_flag_origin_marker",
+        origin_size="wind_flag_origin_marker_size",
+        density="wind_thinning_factor",
+        calm_threshold="wind_flag_calm_below",
+        calm_indicator_size="wind_flag_calm_indicator_size",
+        max_speed="wind_flag_max_speed",
+        min_speed="wind_flag_min_speed",
+        line_thickness="wind_flag_thickness",
+        line_style="wind_flag_style",
+        legend="legend",
+    )
+    def _flags(self, *args, **kwargs):
+        pass
+
+    @action(
+        macro.mwind,
+        {
+            "legend": False,
+            "wind_field_type": "arrows",
             "wind_advanced_method": True,
             "wind_thinning_method": "automatic",
             "wind_arrow_calm_below": {"wind_arrow_calm_indicator": True},
-            "wind_flag_calm_below": {"wind_flag_calm_indicator": True},
             "contour_level_count": {
                 "wind_advanced_colour_selection_type": "count",
             },
@@ -497,35 +539,26 @@ class GeoMap:
                 "wind_advanced_colour_table_colour_method": "calculate",
             },
         },
-        wind_style="wind_field_type",
-        flag_length="wind_flag_length",
-        flag_origin_marker="wind_flag_origin_marker",
-        flag_origin_size="wind_flag_origin_marker_size",
         density="wind_thinning_factor",
-        calm_threshold=["wind_arrow_calm_below", "wind_flag_calm_below"],
-        calm_indicator_size=[
-            "wind_arrow_calm_indicator_size",
-            "wind_flag_calm_indicator_size",
-        ],
+        calm_threshold="wind_arrow_calm_below",
+        calm_indicator_size="wind_arrow_calm_indicator_size",
         _arrow_shape="wind_arrow_head_shape",
         _arrow_ratio="wind_arrow_head_ratio",
         max_speed=[
             "wind_arrow_max_speed",
-            "wind_flag_max_speed",
             "contour_max_level",
             "contour_shade_max_level",
             "wind_advanced_colour_max_value",
         ],
         min_speed=[
             "wind_arrow_min_speed",
-            "wind_flag_min_speed",
             "contour_min_level",
             "contour_shade_min_level",
             "wind_advanced_colour_min_value",
         ],
-        arrow_origin="wind_arrow_origin_position",
-        line_thickness=["wind_arrow_thickness", "wind_flag_thickness"],
-        line_style=["wind_arrow_style", "wind_flag_style"],
+        origin="wind_arrow_origin_position",
+        line_thickness="wind_arrow_thickness",
+        line_style="wind_arrow_style",
         bin_count=["contour_level_count", "wind_advanced_colour_level_count"],
         bin_tolerance=[
             "contour_level_tolerance",
@@ -553,6 +586,79 @@ class GeoMap:
         legend="legend",
     )
     def _arrows_shaded(self, *args, **kwargs):
+        pass
+
+    @action(
+        macro.mwind,
+        {
+            "legend": False,
+            "wind_field_type": "flags",
+            "wind_advanced_method": True,
+            "wind_thinning_method": "automatic",
+            "wind_flag_calm_below": {"wind_flag_calm_indicator": True},
+            "contour_level_count": {
+                "wind_advanced_colour_selection_type": "count",
+            },
+            "contour_interval": {
+                "wind_advanced_colour_selection_type": "interval",
+            },
+            "contour_level_list": {
+                "wind_advanced_colour_selection_type": "list",
+            },
+            "wind_advanced_colour_list": {
+                "wind_advanced_colour_table_colour_method": "list",
+            },
+            "contour_shade_min_level_colour": {
+                "wind_advanced_colour_table_colour_method": "calculate",
+            },
+        },
+        length="wind_flag_length",
+        origin_marker="wind_flag_origin_marker",
+        origin_size="wind_flag_origin_marker_size",
+        density="wind_thinning_factor",
+        calm_threshold="wind_flag_calm_below",
+        calm_indicator_size="wind_flag_calm_indicator_size",
+        max_speed=[
+            "wind_flag_max_speed",
+            "contour_max_level",
+            "contour_shade_max_level",
+            "wind_advanced_colour_max_value",
+        ],
+        min_speed=[
+            "wind_flag_min_speed",
+            "contour_min_level",
+            "contour_shade_min_level",
+            "wind_advanced_colour_min_value",
+        ],
+        line_thickness="wind_flag_thickness",
+        line_style="wind_flag_style",
+        bin_count=["contour_level_count", "wind_advanced_colour_level_count"],
+        bin_tolerance=[
+            "contour_level_tolerance",
+            "wind_advanced_colour_level_tolerance",
+        ],
+        bin_reference=[
+            "contour_reference_level",
+            "wind_advanced_colour_reference_level",
+        ],
+        bin_interval=["contour_interval", "wind_advanced_colour_level_interval"],
+        bins=["contour_level_list", "wind_advanced_colour_level_list"],
+        colours="wind_advanced_colour_list",
+        min_colour=[
+            "contour_shade_min_level_colour",
+            "wind_advanced_colour_min_level_colour",
+        ],
+        max_colour=[
+            "contour_shade_max_level_colour",
+            "wind_advanced_colour_max_level_colour",
+        ],
+        colour_wheel_direction=[
+            "contour_shade_colour_direction",
+            "wind_advanced_colour_direction",
+        ],
+        legend="legend",
+    )
+    def _flags_shaded(self, *args, **kwargs):
         pass
 
     def legend(self, *args, **kwargs):
